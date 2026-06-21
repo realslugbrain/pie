@@ -4,23 +4,22 @@ Pie is a programming language that compiles to native Linux x64 executables via 
 
 ## Status
 
-Pie is under active development. The compiler (lexer, parser, semantic analysis, borrow checking, lowering, and x64 code generation) is functional with 240+ passing tests.
+Pie is under active development. The compiler is functional with 240+ passing tests.
 
 Currently supported:
 
-- Functions, closures, generics with monomorphization
-- Structs, enums, interfaces, type aliases
-- Ownership, borrowing (`&T`, `&mut T`), regions, unsafe blocks
-- Control flow: if/else, while, do-while, for, break, continue, defer, match, labels
-- Operators: arithmetic, comparison, logical, bitwise, string concat, ternary, cast, range, inc/dec
-- Collections: lists, maps, tuples, ranges
-- Primitives: int, float, string, char, bool, Maybe/Option, Result, null, void
-- String interpolation, string methods
-- Module system with `require`
-- Package manager: `pie new`, `pie add`, `pie remove`
-- Standard library scaffold: io, print, assert, threads, format
-- Match expressions with value semantics, `?`/`try` operators
-- Borrow checker: move semantics, shared/mutable borrow tracking, escape analysis
+* Functions, closures, generics with monomorphization
+* Structs, enums, interfaces, type aliases
+* Ownership, borrowing, regions, unsafe blocks
+* If/else, while, do-while, for, break, continue, defer, match, labels
+* Arithmetic, comparison, logical, bitwise, string, ternary, cast, range, inc/dec operators
+* Lists, maps, tuples, ranges
+* int, float, string, char, bool, Maybe/Option, Result, null, void
+* String interpolation and string methods
+* Module system with `require`
+* Package manager: `pie new`, `pie add`, `pie remove`
+* Standard library scaffold: io, print, assert, threads, format
+* Borrow checker with move semantics, borrow tracking, and escape analysis
 
 ## Quick start
 
@@ -38,24 +37,24 @@ end
 
 ### Prerequisites
 
-- Linux x86-64
-- CMake >= 3.20
-- NASM
-- GCC or Clang (C11)
-- Python 3 (for code generators)
-- Ninja
+* Linux x86-64
+* CMake >= 3.20
+* NASM
+* GCC or Clang with C11 support
+* Python 3
+* Ninja
 
-### Build
+### Build the compiler
 
 ```bash
 cmake -B build -G Ninja
 ninja -C build
 ```
 
-This produces two executables:
+This produces:
 
-- `build/piec` -- low-level compiler (emit-asm, emit-ir)
-- `build/pie` -- CLI tool (build, run, test, check, new, add, remove)
+* `build/piec` — low-level compiler
+* `build/pie` — CLI tool
 
 ### Run tests
 
@@ -65,7 +64,7 @@ ctest --test-dir build --output-on-failure
 
 ## CLI usage
 
-```
+```bash
 pie --version
 pie features
 pie check [input.pie]
@@ -78,18 +77,56 @@ pie add <package>[@version]
 pie remove <package>
 ```
 
+## VS Code extension
+
+The VS Code extension is in `pie-vscode/`.
+
+### Build the extension
+
+```bash
+cd pie-vscode
+npm install
+npm run check
+npm test
+npm run bundle
+```
+
+### Package the extension
+
+```bash
+npm run package
+```
+
+This creates a `.vsix` file.
+
+### Install locally
+
+```bash
+code --install-extension pie-language-*.vsix
+```
+
+The extension provides syntax highlighting, snippets, formatting, commands, diagnostics, and language-server support for `.pie` files.
+
+For best diagnostics, make sure the Pie CLI is available as `pie` on your `PATH`, or configure the compiler path in VS Code:
+
+```json
+{
+  "pie.compiler.path": "/absolute/path/to/build/pie"
+}
+```
+
 ## Project structure
 
-```
+```text
 include/pie/            Public C headers
-src/core/               Compiler core (lexer, parser, sema, IR, modules, diagnostics)
-src/features/           Feature capsules (40 feature groups, ~141 source files)
-src/middle/             Middle-end passes (borrow checker, lowering)
+src/core/               Compiler core
+src/features/           Feature capsules
+src/middle/             Borrow checker and lowering
 src/backend/asm/        x64 NASM code generation
-runtime/                Pie runtime (C + NASM startup, print, memory, I/O)
-tools/                  Python code generators and validators
-tests/                  Test suite (170+ tests, fixtures, packages)
-pie-vscode/             VS Code extension (syntax highlighting, language server)
+runtime/                Pie runtime
+tools/                  Python generators and validators
+tests/                  Test suite
+pie-vscode/             VS Code extension
 docs/                   Documentation
 ```
 

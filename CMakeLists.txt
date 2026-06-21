@@ -282,16 +282,10 @@ add_test(
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/unknown_std_require_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/unknown_std_require_error.asm"
 )
-set_tests_properties(pie_unknown_std_require_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_missing_package_require_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/packages/require_local/src/missing_module_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/missing_package_require_error.asm"
-)
-set_tests_properties(pie_missing_package_require_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_package_build
@@ -591,439 +585,274 @@ add_test(
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/immutable_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/immutable_error.asm"
 )
-set_tests_properties(pie_immutable_assignment_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_undefined_variable_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/undefined_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/undefined_error.asm"
-)
-set_tests_properties(pie_undefined_variable_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_duplicate_binding_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/duplicate_binding_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/duplicate_binding_error.asm"
 )
-set_tests_properties(pie_duplicate_binding_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_bool_arithmetic_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/bool_arithmetic_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/bool_arithmetic_error.asm"
-)
-set_tests_properties(pie_bool_arithmetic_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_float_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/float_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/float_type_error.asm"
 )
-set_tests_properties(pie_float_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_byte_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/byte_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/byte_type_error.asm"
-)
-set_tests_properties(pie_byte_type_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_logic_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/logic_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/logic_type_error.asm"
 )
-set_tests_properties(pie_logic_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_logical_bang_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/logical_bang_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/logical_bang_type_error.asm"
 )
-set_tests_properties(pie_logical_bang_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_check_logical_bang_type_error
     COMMAND pie check "${PIE_ROOT}/tests/fixtures/logical_bang_type_error.pie"
-)
-set_tests_properties(pie_check_logical_bang_type_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_binding_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/binding_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/binding_type_error.asm"
 )
-set_tests_properties(pie_binding_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_if_condition_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/if_condition_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/if_condition_type_error.asm"
-)
-set_tests_properties(pie_if_condition_type_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_while_condition_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/while_condition_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/while_condition_type_error.asm"
 )
-set_tests_properties(pie_while_condition_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_scope_leak_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/scope_leak_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/scope_leak_error.asm"
-)
-set_tests_properties(pie_scope_leak_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_anonymous_block_scope_leak_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/anonymous_block_scope_leak_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/anonymous_block_scope_leak_error.asm"
 )
-set_tests_properties(pie_anonymous_block_scope_leak_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_break_outside_loop_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/break_outside_loop_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/break_outside_loop_error.asm"
-)
-set_tests_properties(pie_break_outside_loop_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_continue_outside_loop_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/continue_outside_loop_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/continue_outside_loop_error.asm"
 )
-set_tests_properties(pie_continue_outside_loop_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_undefined_function_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/undefined_function_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/undefined_function_error.asm"
-)
-set_tests_properties(pie_undefined_function_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_function_return_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/function_return_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/function_return_type_error.asm"
 )
-set_tests_properties(pie_function_return_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_function_arity_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/function_arity_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/function_arity_error.asm"
-)
-set_tests_properties(pie_function_arity_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_function_arg_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/function_arg_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/function_arg_type_error.asm"
 )
-set_tests_properties(pie_function_arg_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_moved_value_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/moved_value_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/moved_value_error.asm"
-)
-set_tests_properties(pie_moved_value_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_move_after_move_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/move_after_move_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/move_after_move_error.asm"
 )
-set_tests_properties(pie_move_after_move_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_function_arg_move_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/function_arg_move_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/function_arg_move_error.asm"
-)
-set_tests_properties(pie_function_arg_move_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_shared_then_mut_borrow_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/shared_then_mut_borrow_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/shared_then_mut_borrow_error.asm"
 )
-set_tests_properties(pie_shared_then_mut_borrow_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_mut_then_shared_borrow_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/mut_then_shared_borrow_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/mut_then_shared_borrow_error.asm"
-)
-set_tests_properties(pie_mut_then_shared_borrow_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_use_while_mut_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/use_while_mut_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/use_while_mut_borrowed_error.asm"
 )
-set_tests_properties(pie_use_while_mut_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_assign_while_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/assign_while_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/assign_while_borrowed_error.asm"
-)
-set_tests_properties(pie_assign_while_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_mut_borrow_immutable_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/mut_borrow_immutable_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/mut_borrow_immutable_error.asm"
 )
-set_tests_properties(pie_mut_borrow_immutable_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_mut_reference_assignment_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/mut_reference_assignment_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/mut_reference_assignment_type_error.asm"
-)
-set_tests_properties(pie_mut_reference_assignment_type_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_region_escape_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/region_escape_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/region_escape_error.asm"
 )
-set_tests_properties(pie_region_escape_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_local_reference_escape_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/local_reference_escape_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/local_reference_escape_error.asm"
-)
-set_tests_properties(pie_local_reference_escape_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_ref_alias_escape_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/ref_alias_escape_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/ref_alias_escape_error.asm"
 )
-set_tests_properties(pie_ref_alias_escape_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_struct_function_arg_move_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/struct_function_arg_move_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/struct_function_arg_move_error.asm"
-)
-set_tests_properties(pie_struct_function_arg_move_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_struct_shared_then_mut_borrow_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/struct_shared_then_mut_borrow_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/struct_shared_then_mut_borrow_error.asm"
 )
-set_tests_properties(pie_struct_shared_then_mut_borrow_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_struct_mut_then_shared_borrow_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/struct_mut_then_shared_borrow_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/struct_mut_then_shared_borrow_error.asm"
-)
-set_tests_properties(pie_struct_mut_then_shared_borrow_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_struct_assign_while_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/struct_assign_while_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/struct_assign_while_borrowed_error.asm"
 )
-set_tests_properties(pie_struct_assign_while_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_struct_use_while_mut_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/struct_use_while_mut_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/struct_use_while_mut_borrowed_error.asm"
-)
-set_tests_properties(pie_struct_use_while_mut_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_struct_mut_borrow_immutable_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/struct_mut_borrow_immutable_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/struct_mut_borrow_immutable_error.asm"
 )
-set_tests_properties(pie_struct_mut_borrow_immutable_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_struct_field_assign_while_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/struct_field_assign_while_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/struct_field_assign_while_borrowed_error.asm"
-)
-set_tests_properties(pie_struct_field_assign_while_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_list_moved_value_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/list_moved_value_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/list_moved_value_error.asm"
 )
-set_tests_properties(pie_list_moved_value_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_list_function_arg_move_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/list_function_arg_move_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/list_function_arg_move_error.asm"
-)
-set_tests_properties(pie_list_function_arg_move_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_list_shared_then_mut_borrow_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/list_shared_then_mut_borrow_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/list_shared_then_mut_borrow_error.asm"
 )
-set_tests_properties(pie_list_shared_then_mut_borrow_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_list_assign_while_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/list_assign_while_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/list_assign_while_borrowed_error.asm"
-)
-set_tests_properties(pie_list_assign_while_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_list_use_while_mut_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/list_use_while_mut_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/list_use_while_mut_borrowed_error.asm"
 )
-set_tests_properties(pie_list_use_while_mut_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_list_mut_borrow_immutable_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/list_mut_borrow_immutable_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/list_mut_borrow_immutable_error.asm"
-)
-set_tests_properties(pie_list_mut_borrow_immutable_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_list_index_assign_while_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/list_index_assign_while_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/list_index_assign_while_borrowed_error.asm"
 )
-set_tests_properties(pie_list_index_assign_while_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_list_index_assign_while_shared_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/list_index_assign_while_shared_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/list_index_assign_while_shared_borrowed_error.asm"
-)
-set_tests_properties(pie_list_index_assign_while_shared_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_map_moved_value_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/map_moved_value_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/map_moved_value_error.asm"
 )
-set_tests_properties(pie_map_moved_value_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_map_function_arg_move_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/map_function_arg_move_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/map_function_arg_move_error.asm"
-)
-set_tests_properties(pie_map_function_arg_move_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_map_shared_then_mut_borrow_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/map_shared_then_mut_borrow_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/map_shared_then_mut_borrow_error.asm"
 )
-set_tests_properties(pie_map_shared_then_mut_borrow_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_map_assign_while_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/map_assign_while_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/map_assign_while_borrowed_error.asm"
-)
-set_tests_properties(pie_map_assign_while_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_map_use_while_mut_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/map_use_while_mut_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/map_use_while_mut_borrowed_error.asm"
 )
-set_tests_properties(pie_map_use_while_mut_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_map_mut_borrow_immutable_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/map_mut_borrow_immutable_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/map_mut_borrow_immutable_error.asm"
-)
-set_tests_properties(pie_map_mut_borrow_immutable_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_map_index_assign_while_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/map_index_assign_while_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/map_index_assign_while_borrowed_error.asm"
 )
-set_tests_properties(pie_map_index_assign_while_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_map_index_assign_while_shared_borrowed_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/map_index_assign_while_shared_borrowed_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/map_index_assign_while_shared_borrowed_error.asm"
-)
-set_tests_properties(pie_map_index_assign_while_shared_borrowed_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_run_list_reassign_after_move
@@ -1058,64 +887,40 @@ add_test(
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/raw_address_requires_unsafe_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/raw_address_requires_unsafe_error.asm"
 )
-set_tests_properties(pie_raw_address_requires_unsafe_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_raw_deref_requires_unsafe_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/raw_deref_requires_unsafe_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/raw_deref_requires_unsafe_error.asm"
-)
-set_tests_properties(pie_raw_deref_requires_unsafe_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_raw_pointer_pointee_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/raw_pointer_pointee_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/raw_pointer_pointee_type_error.asm"
 )
-set_tests_properties(pie_raw_pointer_pointee_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_raw_store_requires_unsafe_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/raw_store_requires_unsafe_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/raw_store_requires_unsafe_error.asm"
-)
-set_tests_properties(pie_raw_store_requires_unsafe_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_raw_pointer_arithmetic_requires_unsafe_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/raw_pointer_arithmetic_requires_unsafe_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/raw_pointer_arithmetic_requires_unsafe_error.asm"
 )
-set_tests_properties(pie_raw_pointer_arithmetic_requires_unsafe_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_unsafe_function_call_requires_unsafe_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/unsafe_function_call_requires_unsafe_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/unsafe_function_call_requires_unsafe_error.asm"
-)
-set_tests_properties(pie_unsafe_function_call_requires_unsafe_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_function_abi_slots_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/function_abi_slots_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/function_abi_slots_error.asm"
 )
-set_tests_properties(pie_function_abi_slots_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_function_void_return_value_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/function_void_return_value_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/function_void_return_value_error.asm"
-)
-set_tests_properties(pie_function_void_return_value_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_run_token_syntax
@@ -1128,9 +933,6 @@ add_test(
     NAME pie_lexer_unterminated_string_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/unterminated_string.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/unterminated_string.asm"
-)
-set_tests_properties(pie_lexer_unterminated_string_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_run_int_width
@@ -1697,72 +1499,45 @@ add_test(
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/thread_spawn_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/thread_spawn_type_error.asm"
 )
-set_tests_properties(pie_thread_spawn_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_thread_join_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/thread_join_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/thread_join_type_error.asm"
-)
-set_tests_properties(pie_thread_join_type_error PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_thread_channel_send_type_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/thread_channel_send_type_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/thread_channel_send_type_error.asm"
 )
-set_tests_properties(pie_thread_channel_send_type_error PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_borrowcheck_method_call_while_borrowed
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/borrowcheck_method_call_while_borrowed.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/borrowcheck_method_call_while_borrowed.asm"
-)
-set_tests_properties(pie_borrowcheck_method_call_while_borrowed PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_borrowcheck_method_call_while_mut_borrowed
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/borrowcheck_method_call_while_mut_borrowed.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/borrowcheck_method_call_while_mut_borrowed.asm"
 )
-set_tests_properties(pie_borrowcheck_method_call_while_mut_borrowed PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_borrowcheck_double_move
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/borrowcheck_double_move.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/borrowcheck_double_move.asm"
-)
-set_tests_properties(pie_borrowcheck_double_move PROPERTIES
-    WILL_FAIL TRUE
 )
 add_test(
     NAME pie_borrowcheck_index_assign_while_shared_borrowed
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/borrowcheck_index_assign_while_shared_borrowed.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/borrowcheck_index_assign_while_shared_borrowed.asm"
 )
-set_tests_properties(pie_borrowcheck_index_assign_while_shared_borrowed PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_borrowcheck_string_interp_moved
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/borrowcheck_string_interp_moved.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/borrowcheck_string_interp_moved.asm"
 )
-set_tests_properties(pie_borrowcheck_string_interp_moved PROPERTIES
-    WILL_FAIL TRUE
-)
 add_test(
     NAME pie_borrowcheck_ternary_moved
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/borrowcheck_ternary_moved.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/borrowcheck_ternary_moved.asm"
-)
-set_tests_properties(pie_borrowcheck_ternary_moved PROPERTIES
-    WILL_FAIL TRUE
 )
 
 add_test(
@@ -1898,10 +1673,6 @@ add_test(
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/borrowcheck_if_branch_merge_borrow.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/borrowcheck_if_branch_merge_borrow.asm"
 )
-set_tests_properties(pie_borrowcheck_if_branch_merge_borrow PROPERTIES
-    WILL_FAIL TRUE
-)
-
 add_test(
     NAME pie_borrowcheck_index_while_shared_borrowed
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/borrowcheck_index_while_shared_borrowed.pie"
@@ -1915,27 +1686,15 @@ add_test(
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/borrowcheck_method_call_moved.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/borrowcheck_method_call_moved.asm"
 )
-set_tests_properties(pie_borrowcheck_method_call_moved PROPERTIES
-    WILL_FAIL TRUE
-)
-
 add_test(
     NAME pie_struct_field_access_moved_error
     COMMAND piec emit-asm "${PIE_ROOT}/tests/fixtures/struct_field_access_moved_error.pie"
             -o "${CMAKE_CURRENT_BINARY_DIR}/struct_field_access_moved_error.asm"
 )
-set_tests_properties(pie_struct_field_access_moved_error PROPERTIES
-    WILL_FAIL TRUE
-)
-
 add_test(
     NAME pie_try_error
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/try_error.pie"
 )
-set_tests_properties(pie_try_error PROPERTIES
-    WILL_FAIL TRUE
-)
-
 add_test(
     NAME pie_run_type_alias_basic
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/type_alias_basic.pie"
@@ -1956,18 +1715,10 @@ add_test(
     NAME pie_run_assert_fail
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/assert_fail.pie"
 )
-set_tests_properties(pie_run_assert_fail PROPERTIES
-    WILL_FAIL TRUE
-)
-
 add_test(
     NAME pie_run_assert_eq_fail
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/assert_eq_fail.pie"
 )
-set_tests_properties(pie_run_assert_eq_fail PROPERTIES
-    WILL_FAIL TRUE
-)
-
 add_test(
     NAME pie_run_string_index
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/string_index.pie"
@@ -1980,10 +1731,6 @@ add_test(
     NAME pie_run_string_index_oob
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/string_index_oob.pie"
 )
-set_tests_properties(pie_run_string_index_oob PROPERTIES
-    WILL_FAIL TRUE
-)
-
 add_test(
     NAME pie_run_do_while_basic
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/do_while_basic.pie"
@@ -2031,3 +1778,379 @@ add_test(
 set_tests_properties(pie_run_labelled_nested_break PROPERTIES
     PASS_REGULAR_EXPRESSION "2"
 )
+
+set(PIE_TEST_FAILURE_OUTPUT_REGEX
+    "pie: error:|(^|[\\r\\n])error:|fatal error|Segmentation fault|segmentation fault|AddressSanitizer|UndefinedBehaviorSanitizer|core dumped|Traceback"
+)
+
+set(PIE_TEST_EXPECTED_ERROR_OUTPUT_REGEX
+    "pie: error:|(^|[\\r\\n])error:|undefined|mismatch|expected|requires|already declared|out of scope|borrow|moved|unsafe|unterminated|assert"
+)
+
+set(PIE_EXPECTED_PASS_TESTS
+    piec_version
+    piec_features
+    piec_emit_asm
+    piec_emit_ir
+    piec_run_hello
+    pie_cli_run_hello
+    pie_cli_test_hello
+    pie_check_hello
+    pie_check_package
+    pie_run_stdlib_require_json
+    pie_run_package_require_local
+    pie_run_module_structs
+    pie_run_module_recursive
+    pie_package_build
+    pie_package_build_default
+    pie_package_run
+    pie_package_test
+    pie_new_app
+    pie_new_lib
+    pie_add_remove_dependencies
+    pie_run_arithmetic
+    pie_run_bool
+    pie_run_primitives_extra
+    pie_run_string_binding
+    pie_run_string_reassign_after_move
+    pie_run_reference_string_arg
+    pie_run_reference_local_print
+    pie_run_mut_reference_arg_releases
+    pie_run_mut_reference_assignment
+    pie_run_mut_to_shared_reference_coercion
+    pie_run_return_reference_param
+    pie_run_region_scope
+    pie_run_unsafe_raw_address
+    pie_run_unsafe_raw_deref
+    pie_run_unsafe_raw_deref_typed
+    pie_run_unsafe_raw_store
+    pie_run_unsafe_raw_pointer_arithmetic
+    pie_run_unsafe_function_call
+    pie_run_comparison
+    pie_run_logic
+    pie_run_logical_bang
+    pie_run_if_else
+    pie_run_while_loop
+    pie_run_loop_control
+    pie_run_block_scope_shadow
+    pie_run_anonymous_block_scope
+    pie_run_function_call
+    pie_run_function_params
+    pie_run_function_string_abi
+    pie_run_function_bool_return
+    pie_run_function_float_return
+    pie_run_function_void
+    pie_run_function_explicit_void
+    pie_run_top_level_commas
+    pie_run_list_reassign_after_move
+    pie_run_map_reassign_after_move
+    pie_run_list_borrow_valid
+    pie_run_map_borrow_valid
+    pie_run_token_syntax
+    pie_run_int_width
+    pie_run_int_auto
+    pie_run_float_width
+    pie_run_int_width_arithmetic
+    pie_run_int_width_function
+    pie_run_int_wide
+    pie_run_float_wide
+    pie_run_tuple_swap_basic
+    pie_run_tuple_swap_fib
+    pie_run_elif
+    pie_run_elif_chain
+    pie_run_elif_no_else
+    pie_run_for_range
+    pie_run_for_range_inclusive
+    pie_run_for_body
+    pie_run_struct_basic
+    pie_run_string_concat
+    pie_run_null_literal
+    pie_run_tuple_basic
+    pie_run_list_basic
+    pie_run_enum_basic
+    pie_run_match_basic
+    pie_run_match_value
+    pie_run_match_value_min
+    pie_run_closure_basic
+    pie_run_closure_capture
+    pie_run_closure_call
+    pie_run_closure_capture_call
+    pie_run_cast_basic
+    pie_run_map_methods
+    pie_run_maybe_bool
+    pie_run_closure_call_no_args
+    pie_run_map_empty
+    pie_run_map_one
+    pie_run_enum_payload
+    pie_run_map_put
+    pie_run_list_index
+    pie_run_index_assign
+    pie_run_recursive_function
+    pie_run_float_arithmetic
+    pie_run_byte_arithmetic
+    pie_run_tuple_mixed
+    pie_run_function_helpers
+    pie_run_block_scope
+    pie_run_println_multi
+    pie_run_for_collection
+    pie_run_for_collection_simple
+    pie_run_ternary_basic
+    pie_run_bitwise_basic
+    pie_run_struct_methods
+    pie_run_if_expression_variants
+    pie_run_pub_visibility
+    pie_run_const_declaration
+    pie_run_string_interpolation
+    pie_run_for_multi_var
+    pie_run_power_operator
+    pie_run_inc_dec_operators
+    pie_run_list_operations
+    pie_run_option_result
+    pie_run_if_let
+    pie_run_generic_fn_multi_type
+    pie_run_generic_comprehensive
+    pie_run_generic_arithmetic
+    pie_run_generic_comparison
+    pie_run_struct_user_methods
+    pie_run_closure_invocation
+    pie_run_try_basic
+    pie_run_try_keyword
+    pie_run_map_index
+    pie_run_thread_spawn_join
+    pie_run_thread_mutex_basic
+    pie_run_thread_sleep
+    pie_run_thread_channel_basic
+    pie_run_thread_channel_multi
+    pie_run_thread_spawn_closure
+    pie_run_defer_basic
+    pie_run_defer_early_return
+    pie_run_string_methods
+    pie_run_generic_fn_basic
+    pie_run_generic_comparable
+    pie_run_generic_constraints
+    pie_run_generic_multi_type_params
+    pie_run_struct_moved_value_error
+    pie_run_struct_reassign_after_move
+    pie_run_struct_borrow_valid
+    pie_run_if_expression
+    pie_run_if_expr_simple
+    pie_run_logic_combo
+    pie_run_map_basic
+    pie_run_function_custom_type
+    pie_borrowcheck_closure_capture_moved
+    pie_borrowcheck_index_while_shared_borrowed
+    pie_run_type_alias_basic
+    pie_run_assert_basic
+    pie_run_string_index
+    pie_run_do_while_basic
+    pie_run_do_while_control
+    pie_run_format_basic
+    pie_run_labelled_break
+    pie_run_labelled_continue
+    pie_run_labelled_nested_break
+)
+
+set(PIE_EXPECTED_ERROR_TESTS
+    pie_anonymous_block_scope_leak_error
+    pie_assign_while_borrowed_error
+    pie_binding_type_error
+    pie_bool_arithmetic_error
+    pie_borrowcheck_double_move
+    pie_borrowcheck_if_branch_merge_borrow
+    pie_borrowcheck_index_assign_while_shared_borrowed
+    pie_borrowcheck_method_call_moved
+    pie_borrowcheck_method_call_while_borrowed
+    pie_borrowcheck_method_call_while_mut_borrowed
+    pie_borrowcheck_string_interp_moved
+    pie_borrowcheck_ternary_moved
+    pie_break_outside_loop_error
+    pie_byte_type_error
+    pie_check_logical_bang_type_error
+    pie_const_duplicate_name_error
+    pie_const_type_mismatch_error
+    pie_const_undefined_error
+    pie_continue_outside_loop_error
+    pie_duplicate_binding_error
+    pie_float_type_error
+    pie_function_abi_slots_error
+    pie_function_arg_move_error
+    pie_function_arg_type_error
+    pie_function_arity_error
+    pie_function_return_type_error
+    pie_function_void_return_value_error
+    pie_if_condition_type_error
+    pie_immutable_assignment_error
+    pie_lexer_unterminated_string_error
+    pie_list_assign_while_borrowed_error
+    pie_list_function_arg_move_error
+    pie_list_index_assign_while_borrowed_error
+    pie_list_index_assign_while_shared_borrowed_error
+    pie_list_moved_value_error
+    pie_list_mut_borrow_immutable_error
+    pie_list_shared_then_mut_borrow_error
+    pie_list_use_while_mut_borrowed_error
+    pie_local_reference_escape_error
+    pie_logic_type_error
+    pie_logical_bang_type_error
+    pie_map_assign_while_borrowed_error
+    pie_map_function_arg_move_error
+    pie_map_index_assign_while_borrowed_error
+    pie_map_index_assign_while_shared_borrowed_error
+    pie_map_moved_value_error
+    pie_map_mut_borrow_immutable_error
+    pie_map_shared_then_mut_borrow_error
+    pie_map_use_while_mut_borrowed_error
+    pie_missing_package_require_error
+    pie_move_after_move_error
+    pie_moved_value_error
+    pie_mut_borrow_immutable_error
+    pie_mut_reference_assignment_type_error
+    pie_mut_then_shared_borrow_error
+    pie_pub_visibility_private_error
+    pie_raw_address_requires_unsafe_error
+    pie_raw_deref_requires_unsafe_error
+    pie_raw_pointer_arithmetic_requires_unsafe_error
+    pie_raw_pointer_pointee_type_error
+    pie_raw_store_requires_unsafe_error
+    pie_ref_alias_escape_error
+    pie_region_escape_error
+    pie_run_assert_eq_fail
+    pie_run_assert_fail
+    pie_run_string_index_oob
+    pie_scope_leak_error
+    pie_shared_then_mut_borrow_error
+    pie_struct_assign_while_borrowed_error
+    pie_struct_field_access_moved_error
+    pie_struct_field_assign_while_borrowed_error
+    pie_struct_function_arg_move_error
+    pie_struct_mut_borrow_immutable_error
+    pie_struct_mut_then_shared_borrow_error
+    pie_struct_shared_then_mut_borrow_error
+    pie_struct_use_while_mut_borrowed_error
+    pie_thread_channel_send_type_error
+    pie_thread_join_type_error
+    pie_thread_spawn_type_error
+    pie_try_error
+    pie_undefined_function_error
+    pie_undefined_variable_error
+    pie_unknown_std_require_error
+    pie_unsafe_function_call_requires_unsafe_error
+    pie_use_while_mut_borrowed_error
+    pie_while_condition_type_error
+)
+
+set(PIE_EXPECTED_ERROR_TESTS_NEED_OUTPUT_CHECK
+    pie_anonymous_block_scope_leak_error
+    pie_assign_while_borrowed_error
+    pie_binding_type_error
+    pie_bool_arithmetic_error
+    pie_borrowcheck_double_move
+    pie_borrowcheck_if_branch_merge_borrow
+    pie_borrowcheck_index_assign_while_shared_borrowed
+    pie_borrowcheck_method_call_moved
+    pie_borrowcheck_method_call_while_borrowed
+    pie_borrowcheck_method_call_while_mut_borrowed
+    pie_borrowcheck_string_interp_moved
+    pie_borrowcheck_ternary_moved
+    pie_break_outside_loop_error
+    pie_byte_type_error
+    pie_check_logical_bang_type_error
+    pie_continue_outside_loop_error
+    pie_duplicate_binding_error
+    pie_float_type_error
+    pie_function_abi_slots_error
+    pie_function_arg_move_error
+    pie_function_arg_type_error
+    pie_function_arity_error
+    pie_function_return_type_error
+    pie_function_void_return_value_error
+    pie_if_condition_type_error
+    pie_immutable_assignment_error
+    pie_lexer_unterminated_string_error
+    pie_list_assign_while_borrowed_error
+    pie_list_function_arg_move_error
+    pie_list_index_assign_while_borrowed_error
+    pie_list_index_assign_while_shared_borrowed_error
+    pie_list_moved_value_error
+    pie_list_mut_borrow_immutable_error
+    pie_list_shared_then_mut_borrow_error
+    pie_list_use_while_mut_borrowed_error
+    pie_local_reference_escape_error
+    pie_logic_type_error
+    pie_logical_bang_type_error
+    pie_map_assign_while_borrowed_error
+    pie_map_function_arg_move_error
+    pie_map_index_assign_while_borrowed_error
+    pie_map_index_assign_while_shared_borrowed_error
+    pie_map_moved_value_error
+    pie_map_mut_borrow_immutable_error
+    pie_map_shared_then_mut_borrow_error
+    pie_map_use_while_mut_borrowed_error
+    pie_missing_package_require_error
+    pie_move_after_move_error
+    pie_moved_value_error
+    pie_mut_borrow_immutable_error
+    pie_mut_reference_assignment_type_error
+    pie_mut_then_shared_borrow_error
+    pie_raw_address_requires_unsafe_error
+    pie_raw_deref_requires_unsafe_error
+    pie_raw_pointer_arithmetic_requires_unsafe_error
+    pie_raw_pointer_pointee_type_error
+    pie_raw_store_requires_unsafe_error
+    pie_ref_alias_escape_error
+    pie_region_escape_error
+    pie_run_assert_eq_fail
+    pie_run_assert_fail
+    pie_run_string_index_oob
+    pie_scope_leak_error
+    pie_shared_then_mut_borrow_error
+    pie_struct_assign_while_borrowed_error
+    pie_struct_field_access_moved_error
+    pie_struct_field_assign_while_borrowed_error
+    pie_struct_function_arg_move_error
+    pie_struct_mut_borrow_immutable_error
+    pie_struct_mut_then_shared_borrow_error
+    pie_struct_shared_then_mut_borrow_error
+    pie_struct_use_while_mut_borrowed_error
+    pie_thread_channel_send_type_error
+    pie_thread_join_type_error
+    pie_thread_spawn_type_error
+    pie_try_error
+    pie_undefined_function_error
+    pie_undefined_variable_error
+    pie_unknown_std_require_error
+    pie_unsafe_function_call_requires_unsafe_error
+    pie_use_while_mut_borrowed_error
+    pie_while_condition_type_error
+)
+
+foreach(test_name IN LISTS PIE_EXPECTED_PASS_TESTS)
+    if(TEST ${test_name})
+        set_tests_properties(${test_name} PROPERTIES
+            FAIL_REGULAR_EXPRESSION "${PIE_TEST_FAILURE_OUTPUT_REGEX}"
+        )
+    endif()
+endforeach()
+
+foreach(test_name IN LISTS PIE_EXPECTED_ERROR_TESTS_NEED_OUTPUT_CHECK)
+    if(TEST ${test_name})
+        set_tests_properties(${test_name} PROPERTIES
+            PASS_REGULAR_EXPRESSION "${PIE_TEST_EXPECTED_ERROR_OUTPUT_REGEX}"
+        )
+    endif()
+endforeach()
+
+foreach(test_name IN LISTS PIE_EXPECTED_ERROR_TESTS)
+    if(TEST ${test_name})
+        get_property(has_pass_regex TEST ${test_name} PROPERTY PASS_REGULAR_EXPRESSION SET)
+        if(has_pass_regex)
+            set_tests_properties(${test_name} PROPERTIES
+                WILL_FAIL FALSE
+            )
+        else()
+            set_tests_properties(${test_name} PROPERTIES
+                WILL_FAIL TRUE
+            )
+        endif()
+    endif()
+endforeach()

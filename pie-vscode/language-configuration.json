@@ -1,0 +1,108 @@
+{
+  "comments": {
+    "lineComment": "#",
+    "blockComment": [
+      "/*",
+      "*/"
+    ]
+  },
+  "brackets": [
+    [
+      "(",
+      ")"
+    ],
+    [
+      "[",
+      "]"
+    ],
+    [
+      "{",
+      "}"
+    ]
+  ],
+  "autoClosingPairs": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    },
+    {
+      "open": "\"",
+      "close": "\"",
+      "notIn": [
+        "string",
+        "comment"
+      ]
+    },
+    {
+      "open": "'",
+      "close": "'",
+      "notIn": [
+        "string",
+        "comment"
+      ]
+    },
+    {
+      "open": "/*",
+      "close": "*/",
+      "notIn": [
+        "string"
+      ]
+    }
+  ],
+  "surroundingPairs": [
+    [
+      "(",
+      ")"
+    ],
+    [
+      "[",
+      "]"
+    ],
+    [
+      "{",
+      "}"
+    ],
+    [
+      "\"",
+      "\""
+    ],
+    [
+      "'",
+      "'"
+    ]
+  ],
+  "folding": {
+    "offSide": false,
+    "markers": {
+      "start": "^\\s*(?:pub\\s+)?(?:unsafe\\s+)?(?:fn|struct|enum|if|while|for|match|region|unsafe|do)\\b.*:\\s*(?:#.*)?$",
+      "end": "^\\s*(?:end|while\\b(?!.*:\\s*(?:#.*)?$))"
+    }
+  },
+  "indentationRules": {
+    "increaseIndentPattern": "^\\s*(?:(?:(?:pub\\s+)?(?:unsafe\\s+)?(?:fn|struct|enum)|(?::[A-Za-z_][A-Za-z0-9_]*\\s+)?(?:if|elif|else|while|for|match|case|region|unsafe|do))\\b.*:|.*\\b(?:fn|match)\\b.*:|:)\\s*(?:#.*)?$",
+    "decreaseIndentPattern": "^\\s*(?:end|elif|else|case)\\b|^\\s*while\\b(?!.*:\\s*(?:#.*)?$)"
+  },
+  "wordPattern": "(-?\\d*\\.\\d\\w*)|([^`~!@#$%^&*()=+[{\\]}\\\\|;:'\\\",.<>/?\\s]+)",
+  "onEnterRules": [
+    {
+      "beforeText": "^\\s*(?:(?:pub\\s+)?(?:unsafe\\s+)?(?:fn|struct|enum)|(?::[A-Za-z_][A-Za-z0-9_]*\\s+)?(?:if|elif|else|while|for|match|case|region|unsafe|do)|:)\\b.*:\\s*(?:#.*)?$",
+      "action": {
+        "indentAction": "Indent"
+      }
+    },
+    {
+      "beforeText": "^\\s*(?:end|elif|else|case)\\b.*$",
+      "action": {
+        "indentAction": "Outdent"
+      }
+    }
+  ]
+}

@@ -1,0 +1,357 @@
+{
+  "name": "pie-language",
+  "displayName": "Pie Language Support",
+  "description": "Pie language support.",
+  "version": "1.0.0",
+  "publisher": "slugbrain",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Formatters",
+    "Snippets"
+  ],
+  "keywords": [
+    "pie",
+    "slugbrain",
+    "language server",
+    "lsp",
+    "native language",
+    "compiler diagnostics",
+    "borrow checker"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:pie",
+    "onCommand:pie.checkFile",
+    "onCommand:pie.runFile",
+    "onCommand:pie.buildWorkspace",
+    "onCommand:pie.testWorkspace",
+    "onCommand:pie.restartLanguageServer",
+    "onCommand:pie.showLanguageServerOutput",
+    "onCommand:pie.showCompilerVersion",
+    "onCommand:pie.showResolvedCompilerPath",
+    "onCommand:pie.showPackageInfo",
+    "onTaskType:pie"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check extension.js && node --check server/server.js && node --check server/language.js && node --check server/analyzer.js",
+    "bundle": "esbuild extension.js --bundle --platform=node --format=cjs --external:vscode --outfile=dist/extension.js && esbuild server/server.js --bundle --platform=node --format=cjs --outfile=dist/server.js",
+    "vscode:prepublish": "npm run check && npm test && npm run bundle",
+    "package": "vsce package --no-dependencies",
+    "package:ci": "npm run vscode:prepublish && vsce package --no-dependencies",
+    "test:diagnostics": "node scripts/check-extension-diagnostics.js --root .. --strict --fixture-sweep",
+    "test:diagnostics:live": "node scripts/check-extension-diagnostics.js --root .. --live-only --fixture-sweep --verbose",
+    "test:diagnostics:expected": "node scripts/check-extension-diagnostics.js --root .. --strict --expected-only",
+    "test:fixtures": "node scripts/check-extension-diagnostics.js --root .. --strict --fixture-sweep --verbose"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.2",
+    "esbuild": "^0.25.5"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "pie",
+        "aliases": [
+          "Pie",
+          "pie"
+        ],
+        "extensions": [
+          ".pie"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pie",
+        "scopeName": "source.pie",
+        "path": "./syntaxes/pie.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "pie",
+        "path": "./snippets/pie.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "pie.checkFile",
+        "title": "Pie: Check Current File",
+        "icon": "$(check)"
+      },
+      {
+        "command": "pie.runFile",
+        "title": "Pie: Run Current File",
+        "icon": "$(play)"
+      },
+      {
+        "command": "pie.buildWorkspace",
+        "title": "Pie: Build Package",
+        "icon": "$(tools)"
+      },
+      {
+        "command": "pie.testWorkspace",
+        "title": "Pie: Test Package",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "pie.restartLanguageServer",
+        "title": "Pie: Restart Language Server",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "pie.showLanguageServerOutput",
+        "title": "Pie: Show Language Server Output"
+      },
+      {
+        "command": "pie.showCompilerVersion",
+        "title": "Pie: Show Compiler Version"
+      },
+      {
+        "command": "pie.showResolvedCompilerPath",
+        "title": "Pie: Show Resolved Compiler Path"
+      },
+      {
+        "command": "pie.showPackageInfo",
+        "title": "Pie: Show Package Info"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "pie.runFile",
+          "when": "resourceLangId == pie",
+          "group": "navigation@1"
+        },
+        {
+          "command": "pie.checkFile",
+          "when": "resourceLangId == pie",
+          "group": "navigation@2"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "pie.checkFile",
+          "when": "editorLangId == pie",
+          "group": "pie@1"
+        },
+        {
+          "command": "pie.runFile",
+          "when": "editorLangId == pie",
+          "group": "pie@2"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "pie.checkFile",
+          "when": "editorLangId == pie"
+        },
+        {
+          "command": "pie.runFile",
+          "when": "editorLangId == pie"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Pie",
+      "properties": {
+        "pie.server.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the Pie language server."
+        },
+        "pie.server.trace": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Trace communication with the Pie language server."
+        },
+        "pie.server.diagnosticDebounce": {
+          "type": "number",
+          "default": 400,
+          "minimum": 100,
+          "maximum": 5000,
+          "scope": "resource",
+          "description": "Debounce in milliseconds before live semantic analysis runs after edits."
+        },
+        "pie.compiler.path": {
+          "type": "string",
+          "default": "pie",
+          "scope": "resource",
+          "description": "Path to the Pie CLI executable. The server also checks the workspace build/pie binary."
+        },
+        "pie.compiler.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Run authoritative compiler diagnostics when a Pie document is saved."
+        },
+        "pie.compiler.checkOnChange": {
+          "type": "boolean",
+          "default": false,
+          "scope": "resource",
+          "description": "Run compiler diagnostics after a debounce while typing. Keep off for large workspaces or slow compilers."
+        },
+        "pie.compiler.jsonDiagnostics": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Prefer `pie check --json <file>` and parse structured diagnostics when supported by the compiler."
+        },
+        "pie.compiler.timeout": {
+          "type": "number",
+          "default": 15000,
+          "minimum": 1000,
+          "maximum": 120000,
+          "scope": "resource",
+          "description": "Maximum compiler check duration in milliseconds."
+        },
+        "pie.diagnostics.live": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Report fast lexer and block-structure diagnostics while typing."
+        },
+        "pie.diagnostics.semantic": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Report lightweight live semantic diagnostics such as undefined names, simple type mismatches, unsafe-use hints and immutable assignment."
+        },
+        "pie.completion.autoImports": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Include symbols from other workspace Pie modules in completion results."
+        },
+        "pie.formatting.indentSize": {
+          "type": "number",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 8,
+          "scope": "resource",
+          "description": "Fallback indentation size used by the Pie formatter."
+        },
+        "pie.codeLens.enabled": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Show run, check, and reference actions above declarations."
+        },
+        "pie.statusBar.showOutsidePie": {
+          "type": "boolean",
+          "default": false,
+          "description": "Keep the Pie status bar item visible when the active editor is not a Pie file."
+        }
+      }
+    },
+    "taskDefinitions": [
+      {
+        "type": "pie",
+        "required": [
+          "command"
+        ],
+        "properties": {
+          "command": {
+            "type": "string",
+            "enum": [
+              "check",
+              "build",
+              "run",
+              "test"
+            ]
+          },
+          "file": {
+            "type": "string",
+            "description": "Optional Pie source file."
+          }
+        }
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "scopes": {
+          "type": [
+            "storage.type.primitive.pie",
+            "support.type.builtin.pie",
+            "entity.name.type.pie"
+          ],
+          "enumMember": [
+            "variable.other.enummember.pie"
+          ],
+          "typeParameter": [
+            "entity.name.type.parameter.pie"
+          ],
+          "parameter": [
+            "variable.parameter.pie"
+          ],
+          "property": [
+            "variable.other.property.pie"
+          ],
+          "function": [
+            "entity.name.function.pie"
+          ],
+          "method": [
+            "entity.name.function.method.pie"
+          ],
+          "type.defaultLibrary": [
+            "storage.type.primitive.pie",
+            "support.type.builtin.pie"
+          ],
+          "struct": [
+            "entity.name.type.struct.pie",
+            "entity.name.type.pie"
+          ],
+          "enum": [
+            "entity.name.type.enum.pie",
+            "entity.name.type.pie"
+          ]
+        }
+      }
+    ],
+    "configurationDefaults": {
+      "[pie]": {
+        "editor.semanticHighlighting.enabled": true,
+        "editor.quickSuggestions": {
+          "other": true,
+          "comments": false,
+          "strings": false
+        },
+        "editor.suggest.snippetsPreventQuickSuggestions": false
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/realslugbrain/pie.git",
+    "directory": "pie-vscode"
+  },
+  "files": [
+    "dist",
+    "syntaxes",
+    "snippets",
+    "language-configuration.json",
+    "LICENSE"
+  ],
+  "author": "slugbrain",
+  "homepage": "https://github.com/realslugbrain/pie/tree/main/pie-vscode",
+  "bugs": {
+    "url": "https://github.com/realslugbrain/pie/issues"
+  }
+}

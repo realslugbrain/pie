@@ -1,0 +1,333 @@
+{
+  "Main function": {
+    "prefix": "main",
+    "body": [
+      "fn main() -> int:",
+      "    ${1:println(\"Hello from Pie\")}",
+      "    return 0",
+      "end"
+    ],
+    "description": "Create a Pie entry point"
+  },
+  "Function": {
+    "prefix": "fn",
+    "body": [
+      "fn ${1:name}(${2}) -> ${3:void}:",
+      "    ${4:pass}",
+      "end"
+    ],
+    "description": "Create a function"
+  },
+  "Public function": {
+    "prefix": "pubfn",
+    "body": [
+      "pub fn ${1:name}(${2}) -> ${3:void}:",
+      "    ${4:pass}",
+      "end"
+    ],
+    "description": "Create an exported function"
+  },
+  "Unsafe function": {
+    "prefix": "unsafefn",
+    "body": [
+      "unsafe fn ${1:name}(${2}) -> ${3:void}:",
+      "    ${4:pass}",
+      "end"
+    ],
+    "description": "Create an unsafe function"
+  },
+  "Struct": {
+    "prefix": "struct",
+    "body": [
+      "struct ${1:Name}:",
+      "    ${2:field}: ${3:int}",
+      "end"
+    ],
+    "description": "Create a struct"
+  },
+  "Struct method": {
+    "prefix": "method",
+    "body": [
+      "fn ${1:Type}.${2:name}(self: &${1:Type}${3}) -> ${4:void}:",
+      "    ${5:pass}",
+      "end"
+    ],
+    "description": "Create a method for a custom type"
+  },
+  "Enum": {
+    "prefix": "enum",
+    "body": [
+      "enum ${1:Name}:",
+      "    case ${2:First}",
+      "    case ${3:Second}(${4:int})",
+      "end"
+    ],
+    "description": "Create an enum"
+  },
+  "Match": {
+    "prefix": "match",
+    "body": [
+      "match ${1:value}:",
+      "    case ${2:Type.Variant}:",
+      "        ${3:pass}",
+      "    case _:",
+      "        ${4:pass}",
+      "end"
+    ],
+    "description": "Create a match statement"
+  },
+  "If": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition}:",
+      "    ${2:pass}",
+      "end"
+    ],
+    "description": "Create an if statement"
+  },
+  "If else": {
+    "prefix": "ifelse",
+    "body": [
+      "if ${1:condition}:",
+      "    ${2:pass}",
+      "else:",
+      "    ${3:pass}",
+      "end"
+    ],
+    "description": "Create an if/else statement"
+  },
+  "If let": {
+    "prefix": "iflet",
+    "body": [
+      "if let ${1:Some}(${2:value}) = ${3:option}:",
+      "    ${4:pass}",
+      "end"
+    ],
+    "description": "Create an if-let variant match"
+  },
+  "While": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition}:",
+      "    ${2:pass}",
+      "end"
+    ],
+    "description": "Create a while loop"
+  },
+  "For range": {
+    "prefix": "for",
+    "body": [
+      "for ${1:i} in ${2:0}..${3:10}:",
+      "    ${4:pass}",
+      "end"
+    ],
+    "description": "Create a range loop"
+  },
+  "For collection": {
+    "prefix": "foreach",
+    "body": [
+      "for ${1:item} in ${2:items}:",
+      "    ${3:pass}",
+      "end"
+    ],
+    "description": "Iterate over a collection"
+  },
+  "Region": {
+    "prefix": "region",
+    "body": [
+      "region ${1:name}:",
+      "    ${2:pass}",
+      "end"
+    ],
+    "description": "Create an ownership region"
+  },
+  "Unsafe block": {
+    "prefix": "unsafe",
+    "body": [
+      "unsafe:",
+      "    ${1:pass}",
+      "end"
+    ],
+    "description": "Create an unsafe block"
+  },
+  "Binding": {
+    "prefix": "let",
+    "body": "let ${1:name}: ${2:int} -> ${3:value}",
+    "description": "Create an immutable binding"
+  },
+  "Mutable binding": {
+    "prefix": "letmut",
+    "body": "let mut ${1:name}: ${2:int} -> ${3:value}",
+    "description": "Create a mutable binding"
+  },
+  "Constant": {
+    "prefix": "const",
+    "body": "const ${1:NAME}: ${2:int} = ${3:value}",
+    "description": "Create a constant"
+  },
+  "Require module": {
+    "prefix": "require",
+    "body": "require \"${1:io}\"",
+    "description": "Require a Pie module"
+  },
+  "Defer": {
+    "prefix": "defer",
+    "body": "defer ${1:cleanup()}",
+    "description": "Defer an expression until scope exit"
+  },
+  "Result match": {
+    "prefix": "matchresult",
+    "body": [
+      "match ${1:result}:",
+      "    case Ok(${2:value}):",
+      "        ${3:pass}",
+      "    case Err(${4:error}):",
+      "        ${5:pass}",
+      "end"
+    ],
+    "description": "Match a Result value"
+  },
+  "Option match": {
+    "prefix": "matchoption",
+    "body": [
+      "match ${1:option}:",
+      "    case Some(${2:value}):",
+      "        ${3:pass}",
+      "    case None:",
+      "        ${4:pass}",
+      "end"
+    ],
+    "description": "Match an Option value"
+  },
+  "Typed binding": {
+    "prefix": [
+      "var",
+      ":"
+    ],
+    "body": "${1:name}: ${2:int} -> ${3:value}",
+    "description": "Create a typed binding"
+  },
+  "Mutable typed binding": {
+    "prefix": [
+      "mutvar",
+      "mut"
+    ],
+    "body": "mut ${1:name}: ${2:int} -> ${3:value}",
+    "description": "Create a mutable typed binding"
+  },
+  "Assign existing variable": {
+    "prefix": [
+      "assign",
+      "<-"
+    ],
+    "body": "${1:name} <- ${2:value}",
+    "description": "Assign to an existing mutable variable"
+  },
+  "Initialize after type": {
+    "prefix": "->",
+    "body": "-> ${1:value}",
+    "description": "Initialize a binding"
+  },
+  "Reassign arrow": {
+    "prefix": "<-",
+    "body": "<- ${1:value}",
+    "description": "Reassign a mutable binding"
+  },
+  "Reference type": {
+    "prefix": "ref",
+    "body": "&${1:int}",
+    "description": "Shared reference type"
+  },
+  "Mutable reference type": {
+    "prefix": "mutref",
+    "body": "&mut ${1:int}",
+    "description": "Mutable reference type"
+  },
+  "Anonymous block": {
+    "prefix": "block",
+    "body": [
+      ":",
+      "    ${1:pass}",
+      "end"
+    ],
+    "description": "Create an anonymous scope block"
+  },
+  "List value": {
+    "prefix": "list",
+    "body": "[${1:items}]",
+    "description": "Create a list literal"
+  },
+  "Map value": {
+    "prefix": "map",
+    "body": "{\"${1:key}\": ${2:value}}",
+    "description": "Create a map literal"
+  },
+  "Option some": {
+    "prefix": "some",
+    "body": "Some(${1:value})",
+    "description": "Create an Option value"
+  },
+  "Option none": {
+    "prefix": "none",
+    "body": "None",
+    "description": "Create an empty Option value"
+  },
+  "Result ok": {
+    "prefix": "ok",
+    "body": "Ok(${1:value})",
+    "description": "Create an Ok result"
+  },
+  "Result err": {
+    "prefix": "err",
+    "body": "Err(${1:error})",
+    "description": "Create an Err result"
+  },
+  "Assert": {
+    "prefix": "assert",
+    "body": "assert(${1:condition})",
+    "description": "Assert a condition"
+  },
+  "Assert equal": {
+    "prefix": "asserteq",
+    "body": "assert_eq(${1:actual}, ${2:expected})",
+    "description": "Assert equality"
+  },
+  "Try operator": {
+    "prefix": "try",
+    "body": "${1:result}?",
+    "description": "Use the Result try operator"
+  },
+  "Thread spawn": {
+    "prefix": "spawn",
+    "body": [
+      "let ${1:worker}: () -> int -> fn() -> int:",
+      "    ${2:println(\"child\")}",
+      "    return 0",
+      "end",
+      "let ${3:handle}: thread -> thread.spawn(${1:worker})"
+    ],
+    "description": "Create and spawn a worker thread"
+  },
+  "Defer cleanup": {
+    "prefix": "cleanup",
+    "body": [
+      "defer ${1:cleanup()}"
+    ],
+    "description": "Defer cleanup until scope exit"
+  },
+  "Print variable": {
+    "prefix": "pv",
+    "body": "println(\"${1:name}=\", ${1:name})",
+    "description": "Print a named variable"
+  },
+  "Range": {
+    "prefix": "range",
+    "body": "${1:0}..${2:10}",
+    "description": "Create a range"
+  },
+  "Inclusive range": {
+    "prefix": "rangei",
+    "body": "${1:0}..=${2:10}",
+    "description": "Create an inclusive range"
+  }
+}

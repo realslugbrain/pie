@@ -1,0 +1,484 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Pie",
+  "scopeName": "source.pie",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#characters"
+    },
+    {
+      "include": "#declarations"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#builtins"
+    },
+    {
+      "include": "#literals"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#labels"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#members"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.pie",
+          "begin": "#",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.pie"
+            }
+          },
+          "end": "$"
+        },
+        {
+          "name": "comment.block.pie",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.begin.pie"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.end.pie"
+            }
+          }
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.pie",
+          "begin": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.pie"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.pie"
+            }
+          },
+          "patterns": [
+            {
+              "name": "constant.character.escape.pie",
+              "match": "\\\\[ntr\\\\\"0]"
+            },
+            {
+              "name": "invalid.illegal.escape.pie",
+              "match": "\\\\[^ntr\\\\\"(0]"
+            },
+            {
+              "name": "meta.interpolation.pie",
+              "begin": "\\\\\\(",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.section.interpolation.begin.pie"
+                }
+              },
+              "end": "\\)",
+              "endCaptures": {
+                "0": {
+                  "name": "punctuation.section.interpolation.end.pie"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "$self"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "characters": {
+      "patterns": [
+        {
+          "name": "string.quoted.single.pie",
+          "match": "'(?:\\\\[ntr\\\\'0]|[^\\\\'\\n])'"
+        },
+        {
+          "name": "invalid.illegal.character.pie",
+          "match": "'(?:[^'\\n]|\\\\.)*'"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "name": "meta.type.annotation.pie",
+          "match": "(:)\\s*(&mut\\s+|&|\\*|\\?)?\\s*(int|float|char|byte|string|bool|void|list|map|auto)\\b(?:\\s*(<[^>]+>|\\([^)]*\\)))?",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.type.pie"
+            },
+            "2": {
+              "name": "storage.modifier.reference.pie"
+            },
+            "3": {
+              "name": "storage.type.primitive.pie support.type.builtin.pie"
+            },
+            "4": {
+              "name": "meta.type.arguments.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.type.annotation.pie",
+          "match": "(:)\\s*(&mut\\s+|&|\\*|\\?)?\\s*(Option|Result|channel|mutex|thread)\\b(?:\\s*(<[^>]+>|\\([^)]*\\)))?",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.type.pie"
+            },
+            "2": {
+              "name": "storage.modifier.reference.pie"
+            },
+            "3": {
+              "name": "support.type.builtin.pie storage.type.pie"
+            },
+            "4": {
+              "name": "meta.type.arguments.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.type.annotation.pie",
+          "match": "(:)\\s*(&mut\\s+|&|\\*|\\?)?\\s*([A-Z][A-Za-z0-9_]*)\\b(?:\\s*(<[^>]+>|\\([^)]*\\)))?",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.type.pie"
+            },
+            "2": {
+              "name": "storage.modifier.reference.pie"
+            },
+            "3": {
+              "name": "entity.name.type.pie"
+            },
+            "4": {
+              "name": "meta.type.arguments.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.return.type.pie",
+          "match": "(->)\\s*(&mut\\s+|&|\\*|\\?)?\\s*(int|float|char|byte|string|bool|void|list|map|auto)\\b(?:\\s*(<[^>]+>|\\([^)]*\\)))?",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.assignment.pie"
+            },
+            "2": {
+              "name": "storage.modifier.reference.pie"
+            },
+            "3": {
+              "name": "storage.type.primitive.pie support.type.builtin.pie"
+            },
+            "4": {
+              "name": "meta.type.arguments.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.return.type.pie",
+          "match": "(->)\\s*(&mut\\s+|&|\\*|\\?)?\\s*(Option|Result|channel|mutex|thread)\\b(?:\\s*(<[^>]+>|\\([^)]*\\)))?",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.assignment.pie"
+            },
+            "2": {
+              "name": "storage.modifier.reference.pie"
+            },
+            "3": {
+              "name": "support.type.builtin.pie storage.type.pie"
+            },
+            "4": {
+              "name": "meta.type.arguments.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.return.type.pie",
+          "match": "(->)\\s*(&mut\\s+|&|\\*|\\?)?\\s*([A-Z][A-Za-z0-9_]*)\\b(?:\\s*(<[^>]+>|\\([^)]*\\)))?",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.assignment.pie"
+            },
+            "2": {
+              "name": "storage.modifier.reference.pie"
+            },
+            "3": {
+              "name": "entity.name.type.pie"
+            },
+            "4": {
+              "name": "meta.type.arguments.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.function.definition.pie",
+          "match": "\\b(?:(pub)\\s+)?(?:(unsafe)\\s+)?(fn)\\s+(?:([A-Za-z_][A-Za-z0-9_]*)\\s*(\\.))?([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.visibility.pie"
+            },
+            "2": {
+              "name": "storage.modifier.unsafe.pie"
+            },
+            "3": {
+              "name": "storage.type.function.pie"
+            },
+            "4": {
+              "name": "entity.name.type.receiver.pie"
+            },
+            "5": {
+              "name": "punctuation.accessor.pie"
+            },
+            "6": {
+              "name": "entity.name.function.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.type.definition.pie",
+          "match": "\\b(struct|enum|type)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.pie"
+            },
+            "2": {
+              "name": "entity.name.type.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.constant.definition.pie",
+          "match": "\\b(const)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.pie"
+            },
+            "2": {
+              "name": "variable.other.constant.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.enum.member.pie",
+          "match": "\\b(case)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.case.pie"
+            },
+            "2": {
+              "name": "variable.other.enummember.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.parameter.pie",
+          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=:)",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.pie"
+            }
+          }
+        },
+        {
+          "name": "meta.module.require.pie",
+          "match": "\\b(require)\\s+(\"[^\"\\n]*\")",
+          "captures": {
+            "1": {
+              "name": "keyword.control.import.pie"
+            },
+            "2": {
+              "name": "string.quoted.double.module.pie"
+            }
+          }
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.primitive.pie support.type.builtin.pie",
+          "match": "\\b(?:int|float|char|byte|string|bool|void|list|map|auto)\\b"
+        },
+        {
+          "name": "support.type.builtin.pie storage.type.pie",
+          "match": "\\b(?:Option|Result|Some|None|Ok|Err|channel|mutex|thread)\\b"
+        },
+        {
+          "name": "entity.name.type.parameter.pie",
+          "match": "(?<=\\[|,)\\s*[A-Z][A-Za-z0-9_]*\\s*(?=[:,\\]])"
+        },
+        {
+          "name": "entity.name.type.pie",
+          "match": "\\b[A-Z][A-Za-z0-9_]*\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.pie",
+          "match": "\\b(?:break|continue|defer|do|elif|else|end|for|if|in|match|pass|return|try|while)\\b"
+        },
+        {
+          "name": "keyword.control.import.pie",
+          "match": "\\b(?:from|import|package|require)\\b"
+        },
+        {
+          "name": "storage.type.pie",
+          "match": "\\b(?:enum|fn|struct|type)\\b"
+        },
+        {
+          "name": "storage.modifier.pie",
+          "match": "\\b(?:const|let|mut|pub|raw|region|unsafe|where)\\b"
+        },
+        {
+          "name": "keyword.operator.word.pie",
+          "match": "\\b(?:and|as|not|or)\\b"
+        },
+        {
+          "name": "keyword.other.pie",
+          "match": "\\bnew\\b"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.pie",
+          "match": "\\b(?:assert|assert_eq|format|len|maybe|print|println)\\b(?=\\s*\\()"
+        },
+        {
+          "name": "support.type.namespace.pie",
+          "match": "\\bthread\\b(?=\\s*\\.)"
+        },
+        {
+          "name": "support.function.thread.pie",
+          "match": "(?<=\\.)\\b(?:channel|channel_close|channel_recv|channel_send|join|mutex|mutex_lock|mutex_unlock|sleep|spawn)\\b(?=\\s*\\()"
+        },
+        {
+          "name": "support.function.method.pie",
+          "match": "(?<=\\.)\\b(?:close|contains|get|insert|len|lower|pop|push|put|recv|remove|repeat|replace|reverse|send|sort|trim|upper)\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "literals": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.pie",
+          "match": "\\b(?:false|true)\\b"
+        },
+        {
+          "name": "constant.language.null.pie",
+          "match": "\\bnull\\b"
+        },
+        {
+          "name": "variable.language.self.pie",
+          "match": "\\bself\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.pie",
+          "match": "(?<![A-Za-z0-9_])(?:\\d+\\.\\d+(?:[eE][+-]?\\d+)?|\\d+[eE][+-]?\\d+)(?![A-Za-z0-9_])"
+        },
+        {
+          "name": "constant.numeric.hex.pie",
+          "match": "(?<![A-Za-z0-9_])0[xX][0-9a-fA-F]+(?![A-Za-z0-9_])"
+        },
+        {
+          "name": "constant.numeric.binary.pie",
+          "match": "(?<![A-Za-z0-9_])0[bB][01]+(?![A-Za-z0-9_])"
+        },
+        {
+          "name": "constant.numeric.octal.pie",
+          "match": "(?<![A-Za-z0-9_])0[oO][0-7]+(?![A-Za-z0-9_])"
+        },
+        {
+          "name": "constant.numeric.integer.pie",
+          "match": "(?<![A-Za-z0-9_])\\d+(?![A-Za-z0-9_])"
+        }
+      ]
+    },
+    "labels": {
+      "patterns": [
+        {
+          "name": "entity.name.label.pie",
+          "match": "(?<=:)\\b[A-Za-z_][A-Za-z0-9_]*\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.pie",
+          "match": "(?:\\*\\*=|\\+=|-=|\\*=|/=|%=|<-|->|=)"
+        },
+        {
+          "name": "keyword.operator.comparison.pie",
+          "match": "(?:==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.pie",
+          "match": "(?:\\*\\*|\\+\\+|--|\\+|-|\\*|/|%)"
+        },
+        {
+          "name": "keyword.operator.bitwise.pie",
+          "match": "(?:<<|>>|&|\\||\\^|~)"
+        },
+        {
+          "name": "keyword.operator.range.pie",
+          "match": "(?:\\.\\.=|\\.\\.)"
+        },
+        {
+          "name": "keyword.operator.question.pie",
+          "match": "[?!]"
+        }
+      ]
+    },
+    "members": {
+      "patterns": [
+        {
+          "name": "entity.name.function.call.pie",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b(?=\\s*\\()"
+        },
+        {
+          "name": "variable.other.property.pie",
+          "match": "(?<=\\.)\\b[A-Za-z_][A-Za-z0-9_]*\\b"
+        }
+      ]
+    }
+  }
+}
