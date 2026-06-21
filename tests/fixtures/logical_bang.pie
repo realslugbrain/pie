@@ -1,0 +1,10 @@
+fn main() -> int:
+    ready: bool -> true
+    done: bool -> false
+    if ready and !done:
+        println("bang-not=", !done, " ", !(ready and done))
+    else:
+        println("bang-not=bad")
+    end
+    return 0
+end

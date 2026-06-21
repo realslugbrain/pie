@@ -1,0 +1,8 @@
+fn main() -> int:
+    mut name: string -> "Simon"
+    taken: string -> name
+    name <- "Grace"
+    println(name)
+    return 0
+end
+

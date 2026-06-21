@@ -1,0 +1,26 @@
+{
+  "id": "control.continue",
+  "name": "Continue",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": ["control.while"],
+  "tokens": ["PIE_TOK_CONTINUE"],
+  "keywords": ["continue"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_CONTINUE"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_continue_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_continue_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_continue_lower_stmt"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_continue_codegen_stmt"]
+  }
+}

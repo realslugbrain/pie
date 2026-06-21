@@ -1,0 +1,10 @@
+fn main() -> int:
+    ready: bool -> true
+    done: bool -> false
+    if ready and not done:
+        println("logic=", ready or done, " ", false and true, " ok")
+    else:
+        println("logic=bad")
+    end
+    return 0
+end

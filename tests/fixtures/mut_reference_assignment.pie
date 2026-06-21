@@ -1,0 +1,10 @@
+fn rename(value: &mut string, next: string):
+    value <- next
+    println("inside-mut-ref=", value)
+end
+
+fn main():
+    mut name: string -> "Simon"
+    rename(&mut name, "Grace")
+    println("after-mut-ref=", name)
+end

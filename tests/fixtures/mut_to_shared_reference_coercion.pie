@@ -1,0 +1,15 @@
+fn show(value: &string):
+    println("shared-from-mut=", value)
+end
+
+fn as_shared(value: &mut string) -> &string:
+    return value
+end
+
+fn main():
+    mut name: string -> "Simon"
+    show(&mut name)
+    println("returned-shared=", as_shared(&mut name))
+    name <- "Grace"
+    println("after-coercion=", name)
+end

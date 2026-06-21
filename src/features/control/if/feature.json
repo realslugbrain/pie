@@ -1,0 +1,26 @@
+{
+  "id": "control.if",
+  "name": "If Elif Else",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": ["primitives.bool"],
+  "tokens": ["PIE_TOK_IF", "PIE_TOK_ELIF", "PIE_TOK_ELSE"],
+  "keywords": ["if", "elif", "else"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_IF"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_if_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_if_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_if_lower_stmt"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_if_codegen_stmt"]
+  }
+}

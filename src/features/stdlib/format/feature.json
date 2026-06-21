@@ -1,0 +1,17 @@
+{
+  "id": "stdlib.format",
+  "name": "Format",
+  "group": "stdlib",
+  "version": "0.1.0",
+  "kind": "expr",
+  "deps": ["primitives.string", "primitives.int"],
+  "tokens": ["PIE_TOK_FORMAT"],
+  "keywords": ["format"],
+  "operators": [],
+  "ast_nodes": [],
+  "type_kinds": [],
+  "hooks": ["parse_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_format_parse_expr"]
+  }
+}

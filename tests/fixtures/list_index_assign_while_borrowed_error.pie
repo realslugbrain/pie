@@ -1,0 +1,6 @@
+fn main() -> int:
+    items: list(int) -> [1, 2, 3]
+    active: &mut list(int) -> &mut items
+    items[0] = 99
+    return 0
+end

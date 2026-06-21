@@ -1,0 +1,24 @@
+fn main() -> int:
+    a: int -> 12
+    b: int -> 10
+
+    r1: int -> a & b
+    println("12 & 10 = ", r1)
+
+    r2: int -> a | b
+    println("12 | 10 = ", r2)
+
+    r3: int -> a ^ b
+    println("12 ^ 10 = ", r3)
+
+    r4: int -> a << 2
+    println("12 << 2 = ", r4)
+
+    r5: int -> a >> 1
+    println("12 >> 1 = ", r5)
+
+    r6: int -> ~0
+    println("~0 = ", r6)
+
+    return 0
+end

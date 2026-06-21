@@ -1,0 +1,6 @@
+fn main() -> int:
+    let m: map -> {"alice": 95}
+    let v: int -> m.get("alice")
+    println("map-one=", v)
+    return v
+end

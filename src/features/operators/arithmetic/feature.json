@@ -1,0 +1,27 @@
+{
+  "id": "operators.arithmetic",
+  "name": "Arithmetic Operators",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "operator",
+  "deps": ["primitives.int"],
+  "tokens": ["PIE_TOK_PLUS", "PIE_TOK_MINUS", "PIE_TOK_STAR", "PIE_TOK_SLASH", "PIE_TOK_PERCENT"],
+  "keywords": [],
+  "operators": ["+", "-", "*", "/", "%"],
+  "ast_nodes": ["PIE_AST_BINARY", "PIE_AST_UNARY"],
+  "type_kinds": [],
+  "hooks": ["parse_infix", "parse_prefix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_arithmetic_parse_prefix_expr"],
+    "expr_infix": ["pie_feature_arithmetic_parse_infix_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_arithmetic_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_arithmetic_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_arithmetic_codegen_expr"]
+  }
+}

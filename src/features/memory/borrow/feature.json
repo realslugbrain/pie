@@ -1,0 +1,26 @@
+{
+  "id": "memory.borrow",
+  "name": "Borrowing",
+  "group": "memory",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["memory.ownership"],
+  "tokens": ["PIE_TOK_AMP"],
+  "keywords": [],
+  "operators": ["&", "&mut"],
+  "ast_nodes": ["PIE_AST_BORROW", "PIE_AST_BORROW_MUT"],
+  "type_kinds": ["PIE_TYPE_REF_STRING", "PIE_TYPE_REF_MUT_STRING"],
+  "hooks": ["parse_prefix", "sema_expr", "borrow_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_borrow_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_borrow_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_borrow_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_borrow_codegen_expr"]
+  }
+}

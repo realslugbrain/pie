@@ -1,0 +1,18 @@
+fn main() -> int:
+    enum Color:
+        case Red
+        case Green
+    end
+
+    let c: Color -> Color.Green
+
+    let result: int -> match c:
+        case Color.Red:
+            1
+        case Color.Green:
+            2
+    end
+
+    print(result)
+    return result
+end

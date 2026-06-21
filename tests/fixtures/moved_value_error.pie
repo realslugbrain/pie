@@ -1,0 +1,7 @@
+fn main() -> int:
+    name: string -> "Simon"
+    taken: string -> name
+    println(name)
+    return 0
+end
+

@@ -1,0 +1,29 @@
+{
+  "id": "collections.map",
+  "name": "Map Literals",
+  "group": "collections",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["declarations.bindings"],
+  "tokens": ["PIE_TOK_LBRACE", "PIE_TOK_RBRACE", "PIE_TOK_MAP_TYPE"],
+  "keywords": ["map"],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_MAP"],
+  "type_kinds": ["PIE_AST_TYPE_MAP"],
+  "hooks": ["parse_expr_prefix", "sema_expr", "lower_expr", "codegen_expr", "sema_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_map_parse_literal"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_map_sema_expr"],
+    "stmt": ["pie_feature_map_sema_index_assign"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_map_lower_expr"],
+    "stmt": ["pie_feature_map_lower_index_assign"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_map_codegen_expr"],
+    "stmt": ["pie_feature_map_codegen_index_assign"]
+  }
+}

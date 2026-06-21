@@ -1,0 +1,33 @@
+{
+  "id": "declarations.bindings",
+  "name": "Bindings",
+  "group": "declarations",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": [],
+  "tokens": ["PIE_TOK_COLON", "PIE_TOK_ARROW", "PIE_TOK_EQ", "PIE_TOK_SELF"],
+  "keywords": ["let", "mut", "const"],
+  "operators": ["="],
+  "ast_nodes": ["PIE_AST_BINDING", "PIE_AST_ASSIGN"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "borrow_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_bindings_parse_var_expr"],
+    "stmt": [
+      "pie_feature_bindings_parse_stmt",
+      "pie_feature_bindings_parse_assign_stmt"
+    ]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_bindings_sema_stmt"],
+    "expr": ["pie_feature_bindings_sema_expr"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_bindings_lower_stmt"],
+    "expr": ["pie_feature_bindings_lower_expr"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_bindings_codegen_stmt"],
+    "expr": ["pie_feature_bindings_codegen_expr"]
+  }
+}

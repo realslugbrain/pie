@@ -1,0 +1,14 @@
+struct User:
+    id: int
+    name: string
+end
+
+fn main() -> int:
+    user: User -> new User(id: 1, name: "Simon")
+    shared: &User -> &user
+    take_mut(&mut user)
+    return 0
+end
+
+fn take_mut(value: &mut User):
+end

@@ -1,0 +1,143 @@
+#ifndef PIE_CORE_TOKEN_TOKEN_H
+#define PIE_CORE_TOKEN_TOKEN_H
+
+#include <stddef.h>
+
+typedef enum PieTokenKind {
+  PIE_TOK_EOF,
+  PIE_TOK_NEWLINE,
+  PIE_TOK_IDENTIFIER,
+  PIE_TOK_INT_LITERAL,
+  PIE_TOK_FLOAT_LITERAL,
+  PIE_TOK_CHAR_LITERAL,
+  PIE_TOK_STRING_LITERAL,
+  PIE_TOK_STRING_OPEN,
+  PIE_TOK_STRING_CLOSE,
+  PIE_TOK_TRUE,
+  PIE_TOK_FALSE,
+  PIE_TOK_NULL,
+  PIE_TOK_AND,
+  PIE_TOK_OR,
+  PIE_TOK_NOT,
+
+  PIE_TOK_LPAREN,
+  PIE_TOK_RPAREN,
+  PIE_TOK_COMMA,
+  PIE_TOK_COLON,
+  PIE_TOK_COLON_COLON,
+  PIE_TOK_ARROW,
+
+  PIE_TOK_PLUS,
+  PIE_TOK_MINUS,
+  PIE_TOK_STAR,
+  PIE_TOK_SLASH,
+  PIE_TOK_PERCENT,
+  PIE_TOK_AMP,
+  PIE_TOK_EQ,
+  PIE_TOK_EQ_EQ,
+  PIE_TOK_BANG,
+  PIE_TOK_BANG_EQ,
+  PIE_TOK_LT,
+  PIE_TOK_LT_EQ,
+  PIE_TOK_GT,
+  PIE_TOK_GT_EQ,
+  PIE_TOK_PLUS_EQ,
+  PIE_TOK_MINUS_EQ,
+  PIE_TOK_STAR_EQ,
+  PIE_TOK_SLASH_EQ,
+  PIE_TOK_PERCENT_EQ,
+  PIE_TOK_PLUS_PLUS,
+  PIE_TOK_STAR_STAR,
+  PIE_TOK_STAR_STAR_EQ,
+  PIE_TOK_MINUS_MINUS,
+  PIE_TOK_DOT_DOT,
+  PIE_TOK_DOT_DOT_EQ,
+  PIE_TOK_QUESTION,
+  PIE_TOK_LBRACKET,
+  PIE_TOK_RBRACKET,
+  PIE_TOK_LBRACE,
+  PIE_TOK_RBRACE,
+  PIE_TOK_PIPE,
+  PIE_TOK_CARET,
+  PIE_TOK_TILDE,
+  PIE_TOK_LT_LT,
+  PIE_TOK_GT_GT,
+  PIE_TOK_LARROW,
+
+  PIE_TOK_FN,
+  PIE_TOK_PUB,
+  PIE_TOK_RETURN,
+  PIE_TOK_BREAK,
+  PIE_TOK_CONTINUE,
+  PIE_TOK_FOR,
+  PIE_TOK_IN,
+  PIE_TOK_END,
+  PIE_TOK_IF,
+  PIE_TOK_ELIF,
+  PIE_TOK_ELSE,
+  PIE_TOK_WHILE,
+  PIE_TOK_REGION,
+  PIE_TOK_UNSAFE,
+  PIE_TOK_RAW,
+  PIE_TOK_REQUIRE,
+  PIE_TOK_PACKAGE,
+  PIE_TOK_IMPORT,
+  PIE_TOK_FROM,
+  PIE_TOK_LET,
+  PIE_TOK_MUT,
+  PIE_TOK_CONST,
+  PIE_TOK_PRINT,
+  PIE_TOK_PRINTLN,
+  PIE_TOK_STRUCT,
+  PIE_TOK_NEW,
+  PIE_TOK_ENUM,
+  PIE_TOK_CASE,
+  PIE_TOK_MATCH,
+  PIE_TOK_AS,
+  PIE_TOK_DOT,
+  PIE_TOK_INT_TYPE,
+  PIE_TOK_FLOAT_TYPE,
+  PIE_TOK_CHAR_TYPE,
+  PIE_TOK_BYTE_TYPE,
+  PIE_TOK_STRING_TYPE,
+  PIE_TOK_BOOL_TYPE,
+  PIE_TOK_VOID_TYPE,
+  PIE_TOK_LIST_TYPE,
+  PIE_TOK_MAP_TYPE,
+  PIE_TOK_PASS,
+  PIE_TOK_AUTO,
+  PIE_TOK_DEFER,
+  PIE_TOK_SELF,
+  PIE_TOK_WHERE,
+  PIE_TOK_TRY,
+  PIE_TOK_TYPE,
+  PIE_TOK_ASSERT,
+  PIE_TOK_ASSERT_EQ,
+  PIE_TOK_DO,
+  PIE_TOK_FORMAT
+} PieTokenKind;
+
+typedef struct PieToken {
+  PieTokenKind kind;
+  const char *start;
+  size_t len;
+  int line;
+  int column;
+  long long int_value;
+  double float_value;
+  char *string_value;
+  size_t string_len;
+} PieToken;
+
+typedef struct PieTokenList {
+  PieToken *items;
+  size_t count;
+  size_t capacity;
+} PieTokenList;
+
+const char *pie_token_kind_name(PieTokenKind kind);
+void pie_token_list_init(PieTokenList *tokens);
+void pie_token_list_free(PieTokenList *tokens);
+int pie_token_list_push(PieTokenList *tokens, PieToken token);
+
+#endif

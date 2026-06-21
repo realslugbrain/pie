@@ -1,0 +1,4 @@
+fn main() -> int:
+    count: int -> "not a number"
+    return count
+end

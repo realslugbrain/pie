@@ -1,0 +1,5 @@
+[package]
+name = "module_pub_visibility"
+version = "1.0.0"
+description = "Test pub visibility"
+authors = ["Test"]

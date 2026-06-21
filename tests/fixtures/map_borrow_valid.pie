@@ -1,0 +1,6 @@
+fn main() -> int:
+    ages: map[string]int -> {"Simon": 37}
+    println(ages["Simon"])
+    println(ages["Simon"])
+    return 0
+end

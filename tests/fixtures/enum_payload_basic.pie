@@ -1,0 +1,25 @@
+enum Data:
+    case Int(int)
+    case None
+end
+
+fn main() -> int:
+    let d1: Data -> Data.Int(42)
+    let d2: Data -> Data.None
+
+    match d1:
+        case Data.Int(val):
+            println("d1 is int: ", val)
+        case Data.None:
+            println("d1 is none")
+    end
+
+    match d2:
+        case Data.Int(val):
+            println("d2 is int: ", val)
+        case Data.None:
+            println("d2 is none")
+    end
+
+    return 0
+end

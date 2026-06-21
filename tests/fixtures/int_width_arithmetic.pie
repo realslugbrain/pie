@@ -1,0 +1,9 @@
+x: int<8> -> 10
+y: int<8> -> 20
+z: int<8> -> x + y
+println(z)
+
+a: int<32> -> 1000
+b: int<32> -> 2000
+c: int<32> -> a + b
+println(c)

@@ -1,0 +1,6 @@
+require "io"
+
+fn main():
+    println("package-run=hello")
+end
+

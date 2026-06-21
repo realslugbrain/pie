@@ -1,0 +1,6 @@
+fn main() -> int:
+    ages: map -> {"Simon": 37}
+    active: &mut map -> &mut ages
+    ages["Simon"] = 99
+    return 0
+end

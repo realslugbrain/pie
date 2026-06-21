@@ -1,0 +1,11 @@
+unsafe fn touch(value: int):
+    ptr: *int -> &raw value
+end
+
+fn main() -> int:
+    unsafe:
+        touch(42)
+    end
+    println("unsafe-fn-ok")
+    return 0
+end

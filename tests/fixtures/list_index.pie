@@ -1,0 +1,6 @@
+fn main() -> int:
+    let items: list(int) -> [10, 20, 30]
+    let total: int -> items[0] + items[1] + items[2]
+    println("list-sum=", total)
+    return total
+end

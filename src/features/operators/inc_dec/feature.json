@@ -1,0 +1,24 @@
+{
+  "id": "operators.inc_dec",
+  "name": "Increment/Decrement Operators",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "operator",
+  "deps": ["primitives.int"],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_POSTFIX"],
+  "type_kinds": [],
+  "hooks": ["parse_infix", "parse_prefix", "sema_expr", "lower_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_incdec_parse_prefix_expr"],
+    "expr_infix": ["pie_feature_incdec_parse_infix_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_incdec_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_incdec_lower_expr"]
+  }
+}

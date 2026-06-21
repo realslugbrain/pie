@@ -1,0 +1,14 @@
+fn main():
+    let x: Option(int) -> Some(42)
+    if let Some(val) = x:
+        println(val)
+    else:
+        println(0)
+    end
+    let y: Option(int) -> None
+    if let Some(val) = y:
+        println(val)
+    else:
+        println(-1)
+    end
+end

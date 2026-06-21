@@ -1,0 +1,9 @@
+fn identity[T](x: T) -> T:
+    return x
+end
+
+fn main() -> int:
+    val: int -> identity(42)
+    print(val)
+    return 0
+end

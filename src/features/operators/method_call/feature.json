@@ -1,0 +1,23 @@
+{
+  "id": "operators.method_call",
+  "name": "Method Call Syntax",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": [],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_METHOD_CALL"],
+  "type_kinds": [],
+  "hooks": ["sema_expr", "lower_expr", "codegen_expr"],
+  "sema_hooks": {
+    "expr": ["pie_feature_method_call_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_method_call_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_method_call_codegen_expr"]
+  }
+}

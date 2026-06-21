@@ -1,0 +1,9 @@
+fn take_mut(value: &mut map):
+end
+
+fn main() -> int:
+    ages: map -> {"Simon": 37}
+    shared: &map -> &ages
+    take_mut(&mut ages)
+    return 0
+end

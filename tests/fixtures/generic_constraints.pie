@@ -1,0 +1,26 @@
+fn add[T: numeric](a: T, b: T) -> T:
+    return a
+end
+
+fn identity[T](x: T) -> T:
+    return x
+end
+
+fn main() -> int:
+    # Test numeric constraint with int
+    val1: int -> add(10, 20)
+    print(val1)
+
+    # Test numeric constraint with float
+    val2: float -> add(3.14, 2.71)
+    print(val2)
+
+    # Test no constraint (should work with any type)
+    val3: int -> identity(42)
+    print(val3)
+
+    val4: string -> identity("hello")
+    print(val4)
+
+    return 0
+end

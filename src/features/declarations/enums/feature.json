@@ -1,0 +1,32 @@
+{
+  "id": "declarations.enums",
+  "name": "Enums",
+  "group": "declarations",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["declarations.bindings", "declarations.functions"],
+  "tokens": ["PIE_TOK_ENUM", "PIE_TOK_CASE", "PIE_TOK_MATCH"],
+  "keywords": ["enum", "case", "match"],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_VARIANT", "PIE_STMT_ENUM", "PIE_STMT_MATCH"],
+  "type_kinds": ["PIE_AST_TYPE_ENUM"],
+  "hooks": ["parse_top_level", "parse_expr_prefix", "parse_stmt", "sema_stmt", "sema_expr", "lower_stmt", "lower_expr", "codegen_stmt", "codegen_expr"],
+  "parse_hooks": {
+    "top_level": ["pie_feature_enums_parse_top_level"],
+    "expr_prefix": ["pie_feature_enums_parse_variant_expr", "pie_feature_enums_parse_match_expr"],
+    "expr_infix": ["pie_feature_enums_parse_question_postfix"],
+    "stmt": ["pie_feature_enums_parse_top_level", "pie_feature_enums_parse_match_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_enums_sema_stmt"],
+    "expr": ["pie_feature_enums_sema_expr"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_enums_lower_stmt"],
+    "expr": ["pie_feature_enums_lower_expr"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_enums_codegen_stmt"],
+    "expr": ["pie_feature_enums_codegen_expr"]
+  }
+}

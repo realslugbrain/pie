@@ -1,0 +1,9 @@
+fn main() -> int:
+    x: int -> 5
+    if x > 10:
+        println("big")
+    elif x > 3:
+        println("medium")
+    end
+    return 0
+end

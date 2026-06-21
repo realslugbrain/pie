@@ -1,0 +1,47 @@
+{
+  "id": "control.pass",
+  "name": "Pass Statement",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "statement",
+  "deps": [],
+  "tokens": [
+    "PIE_TOK_PASS"
+  ],
+  "keywords": [
+    "pass"
+  ],
+  "operators": [],
+  "ast_nodes": [
+    "PIE_STMT_PASS"
+  ],
+  "type_kinds": [
+    "PIE_IR_STMT_PASS"
+  ],
+  "hooks": [
+    "parse",
+    "sema",
+    "lower",
+    "codegen"
+  ],
+  "parse_hooks": {
+    "stmt": [
+      "pie_feature_pass_parse_stmt"
+    ]
+  },
+  "sema_hooks": {
+    "stmt": [
+      "pie_feature_pass_sema_stmt"
+    ]
+  },
+  "lower_hooks": {
+    "stmt": [
+      "pie_feature_pass_lower_stmt"
+    ]
+  },
+  "asm_hooks": {
+    "stmt": [
+      "pie_feature_pass_codegen_stmt"
+    ]
+  }
+}

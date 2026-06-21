@@ -1,0 +1,26 @@
+{
+  "id": "primitives.bool",
+  "name": "Booleans",
+  "group": "primitives",
+  "version": "0.1.0",
+  "kind": "type",
+  "deps": [],
+  "tokens": ["PIE_TOK_TRUE", "PIE_TOK_FALSE"],
+  "keywords": ["true", "false", "bool"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_BOOL_LITERAL"],
+  "type_kinds": ["PIE_TYPE_BOOL"],
+  "hooks": ["parse_expr", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_bool_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_bool_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_bool_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_bool_codegen_expr"]
+  }
+}

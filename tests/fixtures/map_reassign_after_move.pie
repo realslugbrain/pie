@@ -1,0 +1,7 @@
+fn main() -> int:
+    mut ages: map -> {"Simon": 37}
+    taken: map -> ages
+    ages <- {"Bob": 42}
+    println(ages["Bob"])
+    return 0
+end

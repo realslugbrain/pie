@@ -1,0 +1,6 @@
+fn main() -> int:
+    let s: string -> "hello"
+    let x: string -> s
+    let msg: string -> "\(s)"
+    return 0
+end

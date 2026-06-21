@@ -1,0 +1,10 @@
+fn take(value: map):
+    println(value["Simon"])
+end
+
+fn main() -> int:
+    ages: map -> {"Simon": 37}
+    take(ages)
+    println(ages["Simon"])
+    return 0
+end

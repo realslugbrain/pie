@@ -1,0 +1,10 @@
+fn main() -> int:
+    let n: int -> 42
+    let f: float -> n as float
+    let back: int -> f as int
+    let s: string -> n as string
+    print(s)
+    let parsed: int -> "123" as int
+    print(parsed)
+    return back
+end

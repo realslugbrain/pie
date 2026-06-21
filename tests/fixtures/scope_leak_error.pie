@@ -1,0 +1,5 @@
+if true:
+    inside: int -> 1
+end
+
+println(inside)

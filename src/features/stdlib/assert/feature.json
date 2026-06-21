@@ -1,0 +1,26 @@
+{
+  "id": "stdlib.assert",
+  "name": "Assert",
+  "group": "stdlib",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": ["primitives.bool", "primitives.int"],
+  "tokens": ["PIE_TOK_ASSERT", "PIE_TOK_ASSERT_EQ"],
+  "keywords": ["assert", "assert_eq"],
+  "operators": [],
+  "ast_nodes": ["PIE_STMT_ASSERT", "PIE_STMT_ASSERT_EQ"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_assert_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_assert_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_assert_lower_stmt"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_assert_codegen_stmt"]
+  }
+}

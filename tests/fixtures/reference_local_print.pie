@@ -1,0 +1,7 @@
+fn main() -> int:
+    name: string -> "Grace"
+    view: &string -> &name
+    println("ref-local=", view)
+    return 0
+end
+

@@ -1,0 +1,26 @@
+{
+  "id": "collections.len_func",
+  "name": "len() Global Function",
+  "group": "collections",
+  "version": "0.1.0",
+  "kind": "function",
+  "deps": ["primitives.int"],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": [],
+  "type_kinds": [],
+  "hooks": ["parse_prefix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_len_func_parse_prefix_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_len_func_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_len_func_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_len_func_codegen_expr"]
+  }
+}

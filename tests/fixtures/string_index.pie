@@ -1,0 +1,8 @@
+greeting: string -> "abc"
+println(greeting[0])
+println(greeting[1])
+println(greeting[2])
+assert_eq(greeting[0], 'a')
+assert_eq(greeting[1], 'b')
+assert_eq(greeting[2], 'c')
+println("string indexing works!")

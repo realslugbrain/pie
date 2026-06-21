@@ -1,0 +1,20 @@
+fn main() -> int:
+    enum Color:
+        case Red
+        case Green
+        case Blue
+    end
+
+    let c: Color -> Color.Green
+    let mut result: int -> 0
+    match c:
+        case Color.Red:
+            result <- 10
+        case Color.Green:
+            result <- 20
+        case Color.Blue:
+            result <- 30
+    end
+    print(result)
+    return result
+end

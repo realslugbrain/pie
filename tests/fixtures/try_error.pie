@@ -1,0 +1,13 @@
+fn divide(a: int, b: int) -> Result(int):
+    if b == 0:
+        return Err(0)
+    end
+    return Ok(a / b)
+end
+
+fn main() -> int:
+    let result: Result(int) -> divide(10, 0)
+    let value: int -> result?
+    println(value)
+    return value
+end

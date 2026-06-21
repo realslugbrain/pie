@@ -1,0 +1,7 @@
+pub fn helper(x: int) -> int:
+    return x * 2
+end
+
+fn private_helper(x: int) -> int:
+    return x + 1
+end

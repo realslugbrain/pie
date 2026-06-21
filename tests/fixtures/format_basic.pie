@@ -1,0 +1,6 @@
+x: string -> format("hello, ", "world")
+println(x)
+y: string -> format("a", "b", "c")
+println(y)
+z: string -> format("only template")
+println(z)

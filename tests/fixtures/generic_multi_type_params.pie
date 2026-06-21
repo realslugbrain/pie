@@ -1,0 +1,13 @@
+fn pair[T, U](first: T, second: U) -> T:
+    return first
+end
+
+fn main() -> int:
+    val1: int -> pair(42, "hello")
+    print(val1)
+
+    val2: string -> pair("world", "test")
+    print(val2)
+
+    return 0
+end

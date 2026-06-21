@@ -1,0 +1,23 @@
+fn identity[T](x: T) -> T:
+    return x
+end
+
+fn swap_pair[T](a: T, b: T) -> T:
+    return b
+end
+
+fn main() -> int:
+    val1: int -> identity(42)
+    print(val1)
+
+    val2: string -> identity("hello")
+    print(val2)
+
+    val3: int -> swap_pair(1, 2)
+    print(val3)
+
+    val4: bool -> identity(true)
+    print(val4)
+
+    return 0
+end

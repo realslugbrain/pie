@@ -1,0 +1,6 @@
+fn main() -> int:
+    let m: map -> {}
+    let l: int -> m.len()
+    println("map-empty-len=", l)
+    return l
+end

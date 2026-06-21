@@ -1,0 +1,7 @@
+fn truth() -> int:
+    return true
+end
+
+fn main() -> int:
+    return truth()
+end

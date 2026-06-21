@@ -1,0 +1,18 @@
+mut i: int -> 0
+mut sum: int -> 0
+
+while true:
+    i += 1
+
+    if i == 3:
+        continue
+    end
+
+    if i == 6:
+        break
+    end
+
+    sum += i
+end
+
+println("loop-control=", sum)

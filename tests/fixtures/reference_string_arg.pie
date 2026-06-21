@@ -1,0 +1,11 @@
+fn show(value: &string):
+    println("ref-arg=", value)
+end
+
+fn main() -> int:
+    name: string -> "Simon"
+    show(&name)
+    println("after-ref=", name)
+    return 0
+end
+

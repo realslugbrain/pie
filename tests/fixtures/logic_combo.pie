@@ -1,0 +1,10 @@
+fn main() -> int:
+    let a: bool -> true
+    let b: bool -> false
+    let c: bool -> a and b
+    let d: bool -> a or b
+    let e: bool -> not b
+    let f: bool -> !(a and b)
+    println("logic=", c, ",", d, ",", e, ",", f)
+    return 0
+end

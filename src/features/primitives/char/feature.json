@@ -1,0 +1,26 @@
+{
+  "id": "primitives.char",
+  "name": "Characters",
+  "group": "primitives",
+  "version": "0.1.0",
+  "kind": "expr",
+  "deps": [],
+  "tokens": ["PIE_TOK_CHAR_LITERAL", "PIE_TOK_CHAR_TYPE"],
+  "keywords": ["char"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_CHAR_LITERAL"],
+  "type_kinds": ["PIE_TYPE_CHAR"],
+  "hooks": ["parse_expr", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_char_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_char_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_char_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_char_codegen_expr"]
+  }
+}

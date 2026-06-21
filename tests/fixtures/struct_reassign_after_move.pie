@@ -1,0 +1,12 @@
+struct User:
+    id: int
+    name: string
+end
+
+fn main() -> int:
+    mut user: User -> new User(id: 1, name: "Simon")
+    taken: User -> user
+    user <- new User(id: 2, name: "Bob")
+    println(user.name)
+    return 0
+end

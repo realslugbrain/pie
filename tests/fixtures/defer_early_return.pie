@@ -1,0 +1,13 @@
+fn cleanup():
+    println("cleanup done")
+end
+
+fn main() -> int:
+    println("start")
+    defer cleanup()
+    if true:
+        return 0
+    end
+    println("unreachable")
+    return 1
+end

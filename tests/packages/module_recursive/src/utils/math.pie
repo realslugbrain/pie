@@ -1,0 +1,5 @@
+require "module_recursive/utils/base"
+
+pub fn triple(x: int) -> int:
+    return double(x) + x
+end

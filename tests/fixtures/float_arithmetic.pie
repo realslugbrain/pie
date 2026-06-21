@@ -1,0 +1,13 @@
+fn main() -> int:
+    let a: float -> 3.14
+    let b: float -> 2.0
+    let sum: float -> a + b
+    let diff: float -> a - b
+    let prod: float -> a * b
+    let quot: float -> a / b
+    println("sum=", sum)
+    println("diff=", diff)
+    println("prod=", prod)
+    println("quot=", quot)
+    return 0
+end

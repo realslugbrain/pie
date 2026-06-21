@@ -1,0 +1,20 @@
+fn main() -> int:
+    let mut x: int -> 5
+    let a: int -> x++
+    let b: int -> x
+    let c: int -> ++x
+    let d: int -> x
+    let e: int -> x--
+    let f: int -> x
+    let g: int -> --x
+    let h: int -> x
+    println(a)
+    println(b)
+    println(c)
+    println(d)
+    println(e)
+    println(f)
+    println(g)
+    println(h)
+    return 0
+end

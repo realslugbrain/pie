@@ -1,0 +1,27 @@
+{
+  "id": "operators.logical",
+  "name": "Logical Operators",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "operator",
+  "deps": ["primitives.bool"],
+  "tokens": ["PIE_TOK_AND", "PIE_TOK_OR", "PIE_TOK_NOT", "PIE_TOK_BANG"],
+  "keywords": ["and", "or", "not"],
+  "operators": ["and", "or", "not", "!"],
+  "ast_nodes": ["PIE_AST_LOGICAL"],
+  "type_kinds": [],
+  "hooks": ["parse_infix", "parse_prefix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_logical_parse_prefix_expr"],
+    "expr_infix": ["pie_feature_logical_parse_infix_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_logical_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_logical_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_logical_codegen_expr"]
+  }
+}

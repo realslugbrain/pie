@@ -1,0 +1,15 @@
+fn main() -> int:
+    x: int -> 5
+    if x > 100:
+        println("huge")
+    elif x > 10:
+        println("big")
+    elif x > 3:
+        println("medium")
+    elif x > 1:
+        println("small")
+    else:
+        println("tiny")
+    end
+    return 0
+end

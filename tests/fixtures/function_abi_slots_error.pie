@@ -1,0 +1,7 @@
+fn too_many(a: string, b: string, c: string, d: string) -> int:
+    return 0
+end
+
+fn main() -> int:
+    return too_many("a", "b", "c", "d")
+end

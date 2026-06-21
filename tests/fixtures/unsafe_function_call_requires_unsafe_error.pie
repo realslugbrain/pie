@@ -1,0 +1,8 @@
+unsafe fn touch(value: int):
+    ptr: *byte -> &raw value
+end
+
+fn main() -> int:
+    touch(42)
+    return 0
+end

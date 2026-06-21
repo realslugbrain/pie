@@ -1,0 +1,11 @@
+fn keep(value: &string) -> &string:
+    return value
+end
+
+fn main() -> int:
+    name: string -> "Simon"
+    view: &string -> keep(&name)
+    println("returned-ref=", view)
+    println("still-owned=", name)
+    return 0
+end

@@ -1,0 +1,4 @@
+x: float<wide> -> 3.14159265358979
+println(x)
+y: float<wide> -> x * 2.0
+println(y)

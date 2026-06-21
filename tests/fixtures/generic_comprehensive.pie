@@ -1,0 +1,39 @@
+fn identity[T](x: T) -> T:
+    return x
+end
+
+fn pair[T, U](first: T, second: U) -> T:
+    return first
+end
+
+fn add[T](a: T, b: T) -> T:
+    return a
+end
+
+fn main() -> int:
+    # Test single type parameter
+    val1: int -> identity(42)
+    print(val1)
+
+    val2: string -> identity("hello")
+    print(val2)
+
+    # Test multiple type parameters
+    val3: int -> pair(42, "hello")
+    print(val3)
+
+    val4: string -> pair("world", 3.14)
+    print(val4)
+
+    val5: bool -> pair(true, 100)
+    print(val5)
+
+    # Test same type parameter used multiple times
+    val6: int -> add(10, 20)
+    print(val6)
+
+    val7: string -> add("foo", "bar")
+    print(val7)
+
+    return 0
+end

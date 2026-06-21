@@ -1,0 +1,10 @@
+fn parse_int(s: string) -> Result(int):
+    return Ok(42)
+end
+
+fn main() -> int:
+    let r: Result(int) -> parse_int("hello")
+    let v: int -> r?
+    println("parsed=", v)
+    return v
+end

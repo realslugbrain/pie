@@ -1,0 +1,7 @@
+fn main() -> int:
+    mut items: list(int) -> [1, 2, 3]
+    taken: list(int) -> items
+    items <- [4, 5, 6]
+    println(items[0])
+    return 0
+end

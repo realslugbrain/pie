@@ -1,0 +1,12 @@
+fn choose_text(flag: bool, yes: string, no: string) -> string:
+    if flag:
+        return yes
+    else:
+        return no
+    end
+end
+
+fn main() -> int:
+    println("chosen=", choose_text(false, "red", "blue"))
+    return 0
+end

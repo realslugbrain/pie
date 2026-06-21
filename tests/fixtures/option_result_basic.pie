@@ -1,0 +1,30 @@
+fn main():
+    let x: Option(int) -> Some(42)
+    match x:
+        case Some(val):
+            println(val)
+        case _:
+            println(0)
+    end
+    let y: Option(int) -> None
+    match y:
+        case Some(val):
+            println(val)
+        case _:
+            println(-1)
+    end
+    let r: Result(int, int) -> Ok(100)
+    match r:
+        case Ok(val):
+            println(val)
+        case Err(code):
+            println(code)
+    end
+    let e: Result(int, int) -> Err(1)
+    match e:
+        case Ok(val):
+            println(val)
+        case Err(code):
+            println(code)
+    end
+end

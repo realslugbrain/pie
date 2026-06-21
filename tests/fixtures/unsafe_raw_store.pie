@@ -1,0 +1,12 @@
+fn main() -> int:
+    mut n: int<32> -> 10
+    mut b: byte -> 1
+    unsafe:
+        np: *int<32> -> &raw n
+        bp: *byte -> &raw b
+        *np = 123456
+        *bp = 255
+    end
+    println("raw-store=", n, " ", b)
+    return 0
+end

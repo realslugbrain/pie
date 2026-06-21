@@ -1,0 +1,7 @@
+fn main() -> int:
+    mut message: string -> "hello strings"
+    println(message)
+    message <- "bye strings"
+    println(message)
+    return 0
+end

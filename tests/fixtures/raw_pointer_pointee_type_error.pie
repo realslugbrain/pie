@@ -1,0 +1,7 @@
+fn main() -> int:
+    n: int<64> -> 42
+    unsafe:
+        ptr: *byte -> &raw n
+    end
+    return 0
+end

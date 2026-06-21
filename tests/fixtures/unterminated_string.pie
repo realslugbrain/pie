@@ -1,0 +1,4 @@
+fn main() -> int:
+    println("this string never ends)
+    return 0
+end

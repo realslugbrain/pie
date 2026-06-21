@@ -1,0 +1,26 @@
+{
+  "id": "operators.string_concat",
+  "name": "String Concatenation",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "operator",
+  "deps": ["primitives.string"],
+  "tokens": ["PIE_TOK_PLUS_PLUS"],
+  "keywords": [],
+  "operators": ["++"],
+  "ast_nodes": [],
+  "type_kinds": [],
+  "hooks": ["parse_infix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_infix": ["pie_feature_string_concat_parse_infix_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_string_concat_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_string_concat_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_string_concat_codegen_expr"]
+  }
+}

@@ -1,0 +1,10 @@
+value: int -> 1
+
+:
+    value: int -> 2
+    borrowed: string -> "scoped"
+    view: &string -> &borrowed
+    println("block-inner=", value, " ", view)
+end
+
+println("block-outer=", value)

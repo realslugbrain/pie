@@ -1,0 +1,10 @@
+struct User:
+    id: int
+    name: string
+end
+
+fn main() -> int:
+    user: User -> new User(id: 1, name: "Simon")
+    active: &mut User -> &mut user
+    return 0
+end

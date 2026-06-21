@@ -1,0 +1,23 @@
+{
+  "id": "control.block",
+  "name": "Anonymous Block",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": [],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_BLOCK"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "lower_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_block_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_block_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_block_lower_stmt"]
+  }
+}

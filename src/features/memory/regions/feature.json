@@ -1,0 +1,26 @@
+{
+  "id": "memory.regions",
+  "name": "Regions",
+  "group": "memory",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": ["memory.borrow"],
+  "tokens": ["PIE_TOK_REGION"],
+  "keywords": ["region"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_REGION"],
+  "type_kinds": ["PIE_TYPE_REGION"],
+  "hooks": ["parse_stmt", "sema_stmt", "borrow_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_regions_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_regions_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_regions_lower_stmt"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_regions_codegen_stmt"]
+  }
+}

@@ -1,0 +1,5 @@
+fn main() -> int:
+    mut x: int -> if true: 1 else: 2 end
+    println("x=", x)
+    return 0
+end

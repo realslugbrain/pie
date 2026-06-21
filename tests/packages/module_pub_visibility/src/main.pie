@@ -1,0 +1,7 @@
+require "module_pub_visibility/funcs"
+
+fn main() -> int:
+    mut result: int -> helper(5)
+    println("result=", result)
+    return 0
+end

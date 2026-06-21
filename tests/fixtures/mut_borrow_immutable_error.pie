@@ -1,0 +1,6 @@
+fn main() -> int:
+    name: string -> "Simon"
+    active: &mut string -> &mut name
+    return 0
+end
+

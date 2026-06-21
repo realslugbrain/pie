@@ -1,0 +1,8 @@
+fn half() -> float:
+    return 1.5
+end
+
+fn main() -> int:
+    println("float-return=", half())
+    return 0
+end

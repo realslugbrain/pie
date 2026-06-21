@@ -1,0 +1,6 @@
+fn main() -> int:
+    let s: string -> "hello"
+    let x: string -> s
+    let y: string -> if true { s } else { "bye" }
+    return 0
+end

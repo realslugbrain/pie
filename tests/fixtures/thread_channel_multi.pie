@@ -1,0 +1,13 @@
+fn main() -> int:
+    let ch: channel -> thread.channel(10)
+    thread.channel_send(ch, 1)
+    thread.channel_send(ch, 2)
+    thread.channel_send(ch, 3)
+    let a: int -> thread.channel_recv(ch)
+    let b: int -> thread.channel_recv(ch)
+    let c: int -> thread.channel_recv(ch)
+    print(a)
+    print(b)
+    print(c)
+    return a
+end

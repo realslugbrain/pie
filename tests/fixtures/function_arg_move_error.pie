@@ -1,0 +1,11 @@
+fn take(value: string):
+    println(value)
+end
+
+fn main() -> int:
+    name: string -> "Simon"
+    take(name)
+    println(name)
+    return 0
+end
+

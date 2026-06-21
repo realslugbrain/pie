@@ -1,0 +1,26 @@
+{
+  "id": "control.while",
+  "name": "While Loop",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": ["primitives.bool"],
+  "tokens": ["PIE_TOK_WHILE"],
+  "keywords": ["while"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_WHILE"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_while_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_while_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_while_lower_stmt"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_while_codegen_stmt"]
+  }
+}

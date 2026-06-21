@@ -1,0 +1,10 @@
+fn take_mut(value: &mut string):
+end
+
+fn main() -> int:
+    mut name: string -> "Simon"
+    shared: &string -> &name
+    take_mut(&mut name)
+    return 0
+end
+

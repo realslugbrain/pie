@@ -1,0 +1,11 @@
+fn main() -> int:
+    let name: string -> "Simon"
+    let age: int -> 42
+    let msg1: string -> "hello, \(name)"
+    let msg2: string -> "name=\(name) age=\(age)"
+    let msg3: string -> "Pi is ~\(3)"
+    println(msg1)
+    println(msg2)
+    println(msg3)
+    return 0
+end

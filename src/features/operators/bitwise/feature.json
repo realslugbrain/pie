@@ -1,0 +1,27 @@
+{
+  "id": "operators.bitwise",
+  "name": "Bitwise Operators",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "operator",
+  "deps": ["primitives.int"],
+  "tokens": ["PIE_TOK_PIPE", "PIE_TOK_CARET", "PIE_TOK_TILDE", "PIE_TOK_LT_LT", "PIE_TOK_GT_GT"],
+  "keywords": [],
+  "operators": ["|", "^", "~", "<<", ">>"],
+  "ast_nodes": [],
+  "type_kinds": [],
+  "hooks": ["parse_expr_infix", "parse_expr_prefix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_infix": ["pie_feature_bitwise_parse_infix"],
+    "expr_prefix": ["pie_feature_bitwise_parse_prefix"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_bitwise_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_bitwise_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_bitwise_codegen_expr"]
+  }
+}

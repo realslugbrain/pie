@@ -1,0 +1,18 @@
+fn divide(a: int, b: int) -> Result(int):
+    if b == 0:
+        return Err(0)
+    end
+    return Ok(a / b)
+end
+
+fn main() -> int:
+    let r1: Result(int) -> divide(10, 2)
+    let v1: int -> r1?
+    println("10/2=", v1)
+
+    let r2: Result(int) -> divide(20, 4)
+    let v2: int -> r2?
+    println("20/4=", v2)
+
+    return v1 + v2
+end

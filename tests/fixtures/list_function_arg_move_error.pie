@@ -1,0 +1,10 @@
+fn take(value: list(int)):
+    println(value[0])
+end
+
+fn main() -> int:
+    items: list(int) -> [1, 2, 3]
+    take(items)
+    println(items[0])
+    return 0
+end

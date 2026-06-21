@@ -1,0 +1,6 @@
+fn main() -> int:
+    items: list(int) -> [1, 2, 3]
+    shared: &list(int) -> &items
+    items <- [4, 5, 6]
+    return 0
+end

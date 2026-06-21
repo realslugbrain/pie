@@ -1,0 +1,27 @@
+struct Point:
+    x: int
+    y: int
+end
+
+fn Point.x_val(self: Point) -> int:
+    return self.x
+end
+
+fn Point.y_val(self: Point) -> int:
+    return self.y
+end
+
+fn Point.sum(self: Point) -> int:
+    return self.x + self.y
+end
+
+fn main() -> int:
+    p: Point -> new Point(x: 10, y: 25)
+    a: int -> p.x_val()
+    println("x = ", a)
+    b: int -> p.y_val()
+    println("y = ", b)
+    c: int -> p.sum()
+    println("sum = ", c)
+    return 0
+end

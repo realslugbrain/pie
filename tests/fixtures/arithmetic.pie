@@ -1,0 +1,7 @@
+fn main() -> int:
+    mut x: int -> 10
+    y: int -> 7
+    x += y * 3 - 4
+    println("result=", x)
+    return 0
+end

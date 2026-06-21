@@ -1,0 +1,7 @@
+fn read(ptr: *int) -> int<64>:
+    return *ptr
+end
+
+fn main() -> int:
+    return 0
+end

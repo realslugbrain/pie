@@ -1,0 +1,15 @@
+fn main() -> int:
+    let ages: map -> {"Alice": 30, "Bob": 25}
+    let a: int -> ages["Alice"]
+    println("age=", a)
+
+    ages["Charlie"] = 40
+    let c: int -> ages["Charlie"]
+    println("charlie=", c)
+
+    ages["Alice"] = 31
+    let a2: int -> ages["Alice"]
+    println("alice-new=", a2)
+
+    return 0
+end

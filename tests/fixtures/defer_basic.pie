@@ -1,0 +1,10 @@
+fn cleanup():
+    println("cleanup done")
+end
+
+fn main() -> int:
+    println("start")
+    defer cleanup()
+    println("end")
+    return 0
+end

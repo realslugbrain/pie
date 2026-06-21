@@ -1,0 +1,24 @@
+{
+  "id": "declarations.const",
+  "name": "Const Declarations",
+  "group": "declarations",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["declarations.bindings"],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "type_kinds": [],
+  "ast_nodes": [],
+  "hooks": ["parse_top_level", "sema_stmt", "lower_expr", "lower_stmt"],
+  "parse_hooks": {
+    "top_level": ["pie_feature_const_parse_top_level"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_const_sema_stmt"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_const_lower_expr"],
+    "stmt": ["pie_feature_const_lower_stmt"]
+  }
+}

@@ -1,0 +1,9 @@
+require "module_structs/helpers/math"
+
+fn main() -> int:
+    mut result: int -> add(10, 20)
+    mut squared: int -> square(5)
+    println("result=", result)
+    println("squared=", squared)
+    return 0
+end

@@ -1,0 +1,14 @@
+{
+  "id": "memory.ownership",
+  "name": "Ownership",
+  "group": "memory",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["declarations.bindings"],
+  "tokens": ["PIE_TOK_OWN"],
+  "keywords": ["own"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_MOVE"],
+  "type_kinds": ["PIE_TYPE_OWNED"],
+  "hooks": ["sema_stmt", "borrow_stmt", "drop_lowering"]
+}

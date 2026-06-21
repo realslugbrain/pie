@@ -1,0 +1,8 @@
+fn bad() -> void:
+    return 1
+end
+
+fn main() -> int:
+    bad()
+    return 0
+end

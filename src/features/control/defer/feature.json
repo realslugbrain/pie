@@ -1,0 +1,23 @@
+{
+  "id": "control.defer",
+  "name": "Defer Statement",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": [],
+  "tokens": ["PIE_TOK_DEFER"],
+  "keywords": ["defer"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_DEFER"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "lower_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_defer_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_defer_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_defer_lower_stmt"]
+  }
+}

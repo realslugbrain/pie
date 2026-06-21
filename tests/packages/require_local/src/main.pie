@@ -1,0 +1,9 @@
+require "require_local/cache"
+
+fn main() -> int:
+    mut sum: int -> add(3, 4)
+    mut product: int -> multiply(5, 6)
+    println("sum=", sum)
+    println("product=", product)
+    return 0
+end

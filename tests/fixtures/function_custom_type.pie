@@ -1,0 +1,34 @@
+struct Point:
+    x: int
+    y: int
+end
+
+enum Status:
+    case Ok
+    case Error
+end
+
+fn get_x(p: Point) -> int:
+    return p.x
+end
+
+fn check(s: Status) -> bool:
+    match s:
+        case Status.Ok: return true
+        case Status.Error: return false
+    end
+end
+
+fn main() -> int:
+    let p: Point -> new Point(x: 10, y: 20)
+    let x: int -> get_x(p)
+    println("x=", x)
+
+    let s: Status -> Status.Ok
+    if check(s):
+        println("status is ok")
+    else:
+        println("status is error")
+    end
+    return 0
+end

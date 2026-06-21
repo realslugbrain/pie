@@ -1,0 +1,28 @@
+struct User:
+    id: int
+    name: string
+end
+
+fn User.greet(self: &User):
+    print("Hello " ++ self.name ++ "!")
+end
+
+fn User.get_id(self: &User) -> int:
+    return self.id
+end
+
+fn User.rename(self: &mut User, new_name: string):
+    self.name = new_name
+end
+
+fn User.describe(self: &User):
+    print(self.name ++ " says hello")
+end
+
+fn main():
+    let user: User -> new User(id: 1, name: "Alice")
+    user.greet()
+    user.rename("Bob")
+    user.greet()
+    user.describe()
+end

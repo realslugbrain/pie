@@ -1,0 +1,31 @@
+{
+  "id": "collections.list",
+  "name": "Lists",
+  "group": "collections",
+  "version": "0.1.0",
+  "kind": "expr",
+  "deps": [],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_LIST", "PIE_STMT_INDEX_ASSIGN"],
+  "type_kinds": ["PIE_AST_TYPE_LIST"],
+  "hooks": ["sema_expr", "lower_expr", "codegen_expr", "parse_stmt", "sema_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_list_parse_literal"],
+    "expr_infix": ["pie_feature_list_parse_index"],
+    "stmt": ["pie_feature_list_parse_index_assign"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_list_sema_expr"],
+    "stmt": ["pie_feature_list_sema_index_assign"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_list_lower_expr"],
+    "stmt": ["pie_feature_list_lower_index_assign"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_list_codegen_expr"],
+    "stmt": ["pie_feature_list_codegen_index_assign"]
+  }
+}

@@ -1,0 +1,15 @@
+struct User:
+    id: int
+    name: string
+end
+
+fn get_name(u: &User) -> string:
+    return u.name
+end
+
+fn main() -> int:
+    user: User -> new User(id: 1, name: "Simon")
+    shared: &User -> &user
+    println(get_name(shared))
+    return 0
+end

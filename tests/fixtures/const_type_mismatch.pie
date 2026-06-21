@@ -1,0 +1,5 @@
+const X: int = "hello"
+
+fn main() -> int:
+    return 0
+end

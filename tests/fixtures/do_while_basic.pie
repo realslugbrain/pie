@@ -1,0 +1,5 @@
+mut x: int <- 0
+do:
+    x <- x + 1
+    println(x)
+while x < 5

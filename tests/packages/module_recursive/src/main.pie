@@ -1,0 +1,9 @@
+require "module_recursive/utils/math"
+
+fn main() -> int:
+    mut d: int -> double(5)
+    mut t: int -> triple(5)
+    println("double=", d)
+    println("triple=", t)
+    return 0
+end

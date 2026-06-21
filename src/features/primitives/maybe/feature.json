@@ -1,0 +1,41 @@
+{
+  "id": "primitives.maybe",
+  "name": "Maybe Bool",
+  "group": "primitives",
+  "version": "0.1.0",
+  "kind": "language",
+  "deps": [],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": [
+    "PIE_EXPR_MAYBE"
+  ],
+  "type_kinds": [],
+  "hooks": [
+    "parse_expr_prefix",
+    "sema_expr",
+    "lower_expr",
+    "asm_expr"
+  ],
+  "parse_hooks": {
+    "expr_prefix": [
+      "pie_feature_maybe_parse_expr"
+    ]
+  },
+  "sema_hooks": {
+    "expr": [
+      "pie_feature_maybe_sema_expr"
+    ]
+  },
+  "lower_hooks": {
+    "expr": [
+      "pie_feature_maybe_lower_expr"
+    ]
+  },
+  "asm_hooks": {
+    "expr": [
+      "pie_feature_maybe_codegen_expr"
+    ]
+  }
+}

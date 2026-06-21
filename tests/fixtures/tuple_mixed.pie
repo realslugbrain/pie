@@ -1,0 +1,19 @@
+enum Data:
+    case Int(int)
+    case Text(string)
+    case None
+end
+
+fn main() -> int:
+    let t: Data -> Data.Int(42)
+    let t2: Data -> Data.Text("hello")
+    match t:
+        case Data.Int(v):
+            println("tuple-mixed=", v)
+        case Data.Text(v):
+            println("text=", v)
+        case Data.None:
+            println("none")
+    end
+    return 0
+end

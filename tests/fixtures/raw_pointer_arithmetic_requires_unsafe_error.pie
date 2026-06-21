@@ -1,0 +1,7 @@
+fn bump(ptr: *int) -> *int:
+    return ptr + 1
+end
+
+fn main() -> int:
+    return 0
+end

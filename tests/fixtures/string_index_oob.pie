@@ -1,0 +1,3 @@
+name: string -> "hi"
+c: char -> name[10]
+println(c)

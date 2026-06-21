@@ -1,0 +1,14 @@
+fn factorial(n: int) -> int:
+    if n <= 1:
+        return 1
+    end
+    return n * factorial(n - 1)
+end
+
+fn main() -> int:
+    let r: int -> factorial(5)
+    println("fact5=", r)
+    let r2: int -> factorial(10)
+    println("fact10=", r2)
+    return r
+end

@@ -1,0 +1,26 @@
+{
+  "id": "stdlib.threads",
+  "name": "Threads",
+  "group": "stdlib",
+  "version": "0.1.0",
+  "kind": "expr",
+  "deps": ["primitives.int", "primitives.string", "declarations.closures"],
+  "tokens": ["PIE_TOK_THREAD"],
+  "keywords": ["thread"],
+  "operators": [],
+  "ast_nodes": [],
+  "type_kinds": ["PIE_AST_TYPE_THREAD", "PIE_AST_TYPE_MUTEX", "PIE_AST_TYPE_CHANNEL"],
+  "hooks": ["parse_expr", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_threads_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_threads_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_threads_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_threads_codegen_expr"]
+  }
+}

@@ -1,0 +1,8 @@
+fn poke(ptr: *int) -> int:
+    *ptr = 42
+    return 0
+end
+
+fn main() -> int:
+    return 0
+end

@@ -1,0 +1,6 @@
+x: int<wide> -> 999999999999999999
+println(x)
+a: int<wide> -> x * x
+println(a)
+b: int<wide> -> x + 1
+println(b)

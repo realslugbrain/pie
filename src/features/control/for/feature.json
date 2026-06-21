@@ -1,0 +1,17 @@
+{
+  "id": "control.for",
+  "name": "For Loop",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": ["primitives.int", "declarations.bindings", "control.while"],
+  "tokens": ["PIE_TOK_FOR", "PIE_TOK_IN", "PIE_TOK_DOT_DOT", "PIE_TOK_DOT_DOT_EQ"],
+  "keywords": ["for", "in"],
+  "operators": ["..", "..="],
+  "ast_nodes": ["PIE_AST_FOR"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_for_parse_stmt"]
+  }
+}

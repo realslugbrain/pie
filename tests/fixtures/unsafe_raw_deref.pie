@@ -1,0 +1,13 @@
+unsafe fn read(ptr: *int) -> int<64>:
+    return *ptr
+end
+
+fn main() -> int:
+    value: int<64> -> 42
+    unsafe:
+        ptr: *int -> &raw value
+        loaded: int<64> -> read(ptr)
+        println("raw-deref=", loaded)
+    end
+    return 0
+end

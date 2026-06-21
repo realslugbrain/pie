@@ -1,0 +1,26 @@
+{
+  "id": "primitives.float",
+  "name": "Floats",
+  "group": "primitives",
+  "version": "0.1.0",
+  "kind": "expr",
+  "deps": [],
+  "tokens": ["PIE_TOK_FLOAT_LITERAL", "PIE_TOK_FLOAT_TYPE"],
+  "keywords": ["float"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_FLOAT_LITERAL"],
+  "type_kinds": ["PIE_TYPE_FLOAT"],
+  "hooks": ["parse_expr", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_float_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_float_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_float_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_float_codegen_expr"]
+  }
+}

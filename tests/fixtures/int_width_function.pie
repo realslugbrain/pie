@@ -1,0 +1,10 @@
+fn add(a: int<32>, b: int<32>) -> int<32>:
+    return a + b
+end
+
+fn main():
+    x: int<32> -> 100
+    y: int<32> -> 200
+    z: int<32> -> add(x, y)
+    println(z)
+end

@@ -1,0 +1,21 @@
+fn abs_val(x: int) -> int:
+    if x < 0:
+        return -x
+    end
+    return x
+end
+
+fn max_of(a: int, b: int) -> int:
+    if a > b:
+        return a
+    end
+    return b
+end
+
+fn main() -> int:
+    let v: int -> abs_val(-42)
+    println("abs=", v)
+    let m: int -> max_of(10, 20)
+    println("max=", m)
+    return v
+end

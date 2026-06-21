@@ -1,0 +1,10 @@
+struct Point:
+    x: int
+    y: int
+end
+
+p: Point -> new Point(x: 10, y: 20)
+println(p.x)
+println(p.y)
+p.x = 30
+println(p.x)

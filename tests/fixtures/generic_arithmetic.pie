@@ -1,0 +1,21 @@
+fn add[T](x: T, y: T) -> T:
+    return x + y
+end
+
+fn mul[T](x: T, y: T) -> T:
+    return x * y
+end
+
+fn sub[T](x: T, y: T) -> T:
+    return x - y
+end
+
+fn main() -> int:
+    val1: int -> add(10, 20)
+    val2: int -> mul(6, 7)
+    val3: int -> sub(50, 8)
+    print(val1)
+    print(val2)
+    print(val3)
+    return 0
+end

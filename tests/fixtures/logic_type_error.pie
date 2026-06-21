@@ -1,0 +1,6 @@
+fn main() -> int:
+    if true and 1:
+        println("bad")
+    end
+    return 0
+end

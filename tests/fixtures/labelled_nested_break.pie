@@ -1,0 +1,12 @@
+mut count: int <- 0
+:outer while true:
+    mut j: int <- 0
+    while j < 5:
+        j <- j + 1
+        if j == 3:
+            break :outer
+        end
+        count <- count + 1
+    end
+end
+println(count)

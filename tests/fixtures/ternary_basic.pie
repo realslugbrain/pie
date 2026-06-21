@@ -1,0 +1,8 @@
+fn main() -> int:
+    let x: int -> 10
+    let cond: bool -> x > 5
+    let result_true: int -> cond ? 100 : 200
+    let result_false: int -> x < 5 ? 100 : 200
+    println("true=", result_true, " false=", result_false)
+    return result_true + result_false
+end

@@ -1,0 +1,10 @@
+type UserId: int
+type UserName: string
+
+fn main() -> int:
+    id: UserId -> 42
+    name: UserName -> "Simon"
+    println(id)
+    println(name)
+    return 0
+end

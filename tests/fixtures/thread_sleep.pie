@@ -1,0 +1,5 @@
+fn main() -> int:
+    thread.sleep(10)
+    println("slept")
+    return 0
+end

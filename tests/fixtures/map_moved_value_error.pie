@@ -1,0 +1,6 @@
+fn main() -> int:
+    ages: map -> {"Simon": 37}
+    taken: map -> ages
+    println(ages["Simon"])
+    return 0
+end

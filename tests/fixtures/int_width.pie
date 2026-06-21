@@ -1,0 +1,8 @@
+x: int<8> -> 42
+y: int<16> -> 1000
+z: int<32> -> 100000
+w: int<64> -> 999999999
+println(x)
+println(y)
+println(z)
+println(w)

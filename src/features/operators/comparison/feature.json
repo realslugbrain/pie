@@ -1,0 +1,26 @@
+{
+  "id": "operators.comparison",
+  "name": "Comparison Operators",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "operator",
+  "deps": ["primitives.bool", "primitives.int"],
+  "tokens": ["PIE_TOK_EQ_EQ", "PIE_TOK_BANG_EQ", "PIE_TOK_LT", "PIE_TOK_LT_EQ", "PIE_TOK_GT", "PIE_TOK_GT_EQ"],
+  "keywords": [],
+  "operators": ["==", "!=", "<", "<=", ">", ">="],
+  "ast_nodes": ["PIE_AST_COMPARISON"],
+  "type_kinds": [],
+  "hooks": ["parse_infix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_infix": ["pie_feature_comparison_parse_infix_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_comparison_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_comparison_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_comparison_codegen_expr"]
+  }
+}

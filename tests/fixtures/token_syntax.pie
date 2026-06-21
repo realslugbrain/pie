@@ -1,0 +1,15 @@
+require "io"
+
+/*
+   The lexer should ignore this block comment.
+*/
+fn main() -> int:
+    let mut a: int -> 0x10
+    b: int -> 0b1010
+    c: int -> 0o7
+    # commas separate statements outside calls
+    a += b, a += c
+    value: int -> -(a - c) * (c - 4)
+    println("token=", value)
+    return 0
+end

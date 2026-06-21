@@ -1,0 +1,11 @@
+struct User:
+    id: int
+    name: string
+end
+
+fn main() -> int:
+    user: User -> new User(id: 1, name: "Simon")
+    taken: User -> user
+    println(taken.id)
+    return 0
+end

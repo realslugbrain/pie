@@ -1,0 +1,11 @@
+fn main() -> int:
+    score: int -> 12
+    mut branch: string -> "small"
+    if score > 10:
+        branch <- "big"
+    else:
+        branch <- "small"
+    end
+    println("branch=", branch)
+    return 0
+end

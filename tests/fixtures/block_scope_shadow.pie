@@ -1,0 +1,8 @@
+value: int -> 1
+
+if true:
+    value: int -> 2
+    println("inner=", value)
+end
+
+println("outer=", value)

@@ -1,0 +1,7 @@
+fn main() -> int:
+    mut name: string -> "Simon"
+    active: &mut string -> &mut name
+    shared: &string -> &name
+    return 0
+end
+

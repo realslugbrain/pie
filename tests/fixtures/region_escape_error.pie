@@ -1,0 +1,10 @@
+fn leak() -> &string:
+    region temp:
+        message: string -> "Simon"
+        return &message
+    end
+end
+
+fn main() -> int:
+    return 0
+end

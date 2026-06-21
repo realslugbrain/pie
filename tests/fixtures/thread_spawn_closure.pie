@@ -1,0 +1,12 @@
+fn main() -> int:
+    let worker: () -> int -> fn() -> int:
+        println("child")
+        return 0
+    end
+    let h1: thread -> thread.spawn(worker)
+    let h2: thread -> thread.spawn(worker)
+    thread.join(h1)
+    thread.join(h2)
+    println("done")
+    return 0
+end

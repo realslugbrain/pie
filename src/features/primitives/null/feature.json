@@ -1,0 +1,26 @@
+{
+  "id": "primitives.null",
+  "name": "Null Literal",
+  "group": "primitives",
+  "version": "0.1.0",
+  "kind": "expr",
+  "deps": [],
+  "tokens": ["PIE_TOK_NULL"],
+  "keywords": ["null"],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_NULL"],
+  "type_kinds": ["PIE_TYPE_NULL"],
+  "hooks": ["parse_expr", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_null_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_null_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_null_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_null_codegen_expr"]
+  }
+}

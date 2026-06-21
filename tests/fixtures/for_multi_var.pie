@@ -1,0 +1,9 @@
+fn main() -> int:
+    let items: list(int) -> [10, 20, 30]
+    let mut sum: int -> 0
+    for i, item in items:
+        sum += item
+    end
+    println(sum)
+    return 0
+end

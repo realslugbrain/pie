@@ -1,0 +1,20 @@
+unsafe fn read_byte(ptr: *byte) -> byte:
+    return *ptr
+end
+
+unsafe fn read_i32(ptr: *int<32>) -> int<32>:
+    return *ptr
+end
+
+fn main() -> int:
+    b: byte -> 255
+    n: int<32> -> 123456
+    unsafe:
+        bp: *byte -> &raw b
+        np: *int<32> -> &raw n
+        loaded_b: byte -> read_byte(bp)
+        loaded_n: int<32> -> read_i32(np)
+        println("raw-typed=", loaded_b, " ", loaded_n)
+    end
+    return 0
+end

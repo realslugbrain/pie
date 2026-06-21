@@ -1,0 +1,26 @@
+{
+  "id": "stdlib.print",
+  "name": "Print",
+  "group": "stdlib",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": ["primitives.int", "primitives.string"],
+  "tokens": ["PIE_TOK_PRINT", "PIE_TOK_PRINTLN"],
+  "keywords": ["print", "println"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_PRINT"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "lower_stmt", "codegen_stmt", "builtin"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_print_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_print_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_print_lower_stmt"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_print_codegen_stmt"]
+  }
+}

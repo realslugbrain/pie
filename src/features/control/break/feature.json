@@ -1,0 +1,26 @@
+{
+  "id": "control.break",
+  "name": "Break",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": ["control.while"],
+  "tokens": ["PIE_TOK_BREAK"],
+  "keywords": ["break"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_BREAK"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "lower_stmt", "codegen_stmt"],
+  "parse_hooks": {
+    "stmt": ["pie_feature_break_parse_stmt"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_break_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_break_lower_stmt"]
+  },
+  "asm_hooks": {
+    "stmt": ["pie_feature_break_codegen_stmt"]
+  }
+}

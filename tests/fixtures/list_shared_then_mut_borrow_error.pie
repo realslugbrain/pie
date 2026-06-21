@@ -1,0 +1,9 @@
+fn take_mut(value: &mut list(int)):
+end
+
+fn main() -> int:
+    items: list(int) -> [1, 2, 3]
+    shared: &list(int) -> &items
+    take_mut(&mut items)
+    return 0
+end

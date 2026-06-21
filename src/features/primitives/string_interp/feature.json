@@ -1,0 +1,26 @@
+{
+  "id": "primitives.string_interp",
+  "name": "String Interpolation",
+  "group": "primitives",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["primitives.string"],
+  "tokens": ["PIE_TOK_STRING_OPEN", "PIE_TOK_STRING_CLOSE"],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_STRING_INTERP"],
+  "type_kinds": [],
+  "hooks": ["parse_expr", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_string_interp_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_string_interp_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_string_interp_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_string_interp_codegen_expr"]
+  }
+}

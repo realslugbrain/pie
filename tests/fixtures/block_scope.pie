@@ -1,0 +1,7 @@
+fn main() -> int:
+    let n: int -> 5
+    let tmp: int -> n * 2
+    let result: int -> tmp + 1
+    println("block-expr=", result)
+    return result
+end

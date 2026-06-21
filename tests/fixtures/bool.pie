@@ -1,0 +1,6 @@
+fn main() -> int:
+    mut flag: bool -> false
+    flag <- true
+    println("flag=", flag)
+    return 0
+end

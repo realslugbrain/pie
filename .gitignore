@@ -1,0 +1,36 @@
+# Build directories
+build/
+dist/
+
+# Compiled
+*.o
+*.a
+*.so
+*.dylib
+
+# Generated files
+*.asm
+!runtime/asm/linux_x64/start.asm
+*.out
+*.exe
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+*.vsix
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+main.md
+syntax.txt

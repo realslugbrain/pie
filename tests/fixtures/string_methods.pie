@@ -1,0 +1,16 @@
+fn main() -> int:
+    name: string -> "hello, world"
+    upper: string -> name.upper()
+    lower: string -> name.lower()
+    trimmed: string -> "  spaces  ".trim()
+    has_world: bool -> name.contains("world")
+    repeated: string -> "ab".repeat(3)
+    replaced: string -> name.replace("world", "pie")
+    println(upper)
+    println(lower)
+    println(trimmed)
+    println(has_world)
+    println(repeated)
+    println(replaced)
+    return 0
+end

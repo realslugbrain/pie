@@ -1,0 +1,26 @@
+{
+  "id": "collections.range",
+  "name": "Range Expressions",
+  "group": "collections",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["declarations.bindings"],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_RANGE"],
+  "type_kinds": [],
+  "hooks": ["parse_expr_infix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_infix": ["pie_feature_range_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_range_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_range_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_range_codegen_expr"]
+  }
+}

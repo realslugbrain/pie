@@ -1,0 +1,11 @@
+fn main() -> int<64>:
+    mut a: int<wide> -> 0
+    mut b: int<wide> -> 1
+    mut i: int<64> -> 0
+    while i < 100:
+        a, b <- b, a + b
+        i <- i + 1
+    end
+    print(a)
+    return 0
+end

@@ -1,0 +1,8 @@
+x: int<auto> -> 7
+y: int<auto> -> 300
+z: int<auto> -> 50000
+w: int<auto> -> 9999999999
+println(x)
+println(y)
+println(z)
+println(w)

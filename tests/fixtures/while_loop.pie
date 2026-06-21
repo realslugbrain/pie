@@ -1,0 +1,10 @@
+fn main() -> int:
+    mut i: int -> 0
+    mut total: int -> 0
+    while i < 5:
+        total += i
+        i += 1
+    end
+    println("loop=", total)
+    return 0
+end

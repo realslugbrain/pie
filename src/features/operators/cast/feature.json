@@ -1,0 +1,26 @@
+{
+  "id": "operators.cast",
+  "name": "Type Casting",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["declarations.bindings"],
+  "tokens": ["PIE_TOK_AS"],
+  "keywords": ["as"],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_CAST"],
+  "type_kinds": [],
+  "hooks": ["parse_expr_infix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_infix": ["pie_feature_cast_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_cast_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_cast_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_cast_codegen_expr"]
+  }
+}

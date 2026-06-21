@@ -1,0 +1,12 @@
+const MAX: int = 100
+const MIN: int = 0
+const NAME: string = "hello"
+const FLAG: bool = true
+
+fn main() -> int:
+    let x: int -> MAX + MIN
+    let y: string -> NAME
+    let z: bool -> FLAG
+    println("x=", x, " y=", y, " z=", z)
+    return 0
+end

@@ -1,0 +1,9 @@
+fn ping() -> void:
+    println("pong")
+    return
+end
+
+fn main() -> int:
+    ping()
+    return 0
+end

@@ -1,0 +1,16 @@
+fn main() -> int:
+    let items: list(int) -> [3, 1, 2]
+    println(len(items))
+    items.push(4)
+    println(len(items))
+    println(items.pop())
+    items.insert(0, 99)
+    println(items[0])
+    items.remove(1)
+    println(items[0])
+    items.reverse()
+    println(items[0])
+    items.sort()
+    println(items[0])
+    return 0
+end

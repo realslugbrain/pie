@@ -1,0 +1,7 @@
+fn main() -> int:
+    let m: map -> {"a": 1, "b": 2}
+    m.put("c", 3)
+    let v: int -> m.get("c")
+    println("map-put=", v)
+    return v
+end

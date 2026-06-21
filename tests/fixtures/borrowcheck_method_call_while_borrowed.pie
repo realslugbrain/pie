@@ -1,0 +1,6 @@
+fn main() -> int:
+    let s: string -> "hello"
+    let r: &string -> &s
+    s.len()
+    return 0
+end

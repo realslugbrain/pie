@@ -1,0 +1,17 @@
+{
+  "id": "modules.require",
+  "name": "Require",
+  "group": "modules",
+  "version": "0.1.0",
+  "kind": "stmt",
+  "deps": [],
+  "tokens": ["PIE_TOK_REQUIRE"],
+  "keywords": ["require"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_REQUIRE"],
+  "type_kinds": [],
+  "hooks": ["parse_stmt", "sema_stmt", "module_load"],
+  "parse_hooks": {
+    "top_level": ["pie_feature_modules_require_parse_top_level"]
+  }
+}

@@ -1,0 +1,8 @@
+fn leak() -> &string:
+    name: string -> "Simon"
+    return &name
+end
+
+fn main() -> int:
+    return 0
+end

@@ -1,0 +1,5 @@
+fn main() -> int:
+    let scores: map -> {"alice": 95, "bob": 87}
+    print(1)
+    return 1
+end

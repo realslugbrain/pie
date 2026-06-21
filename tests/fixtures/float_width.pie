@@ -1,0 +1,4 @@
+x: float<32> -> 3.14
+y: float<64> -> 2.718281828
+println(x)
+println(y)

@@ -1,0 +1,7 @@
+fn log_message(msg: string):
+    println("log=", msg)
+end
+
+fn main():
+    log_message("void")
+end

@@ -1,0 +1,7 @@
+fn main() -> int:
+    mut name: string -> "Simon"
+    active: &mut string -> &mut name
+    println(name)
+    return 0
+end
+

@@ -1,0 +1,26 @@
+{
+  "id": "primitives.int",
+  "name": "Integer Literals",
+  "group": "primitives",
+  "version": "0.1.0",
+  "kind": "type",
+  "deps": [],
+  "tokens": ["PIE_TOK_INT_LITERAL"],
+  "keywords": ["int"],
+  "operators": [],
+  "ast_nodes": ["PIE_AST_INT_LITERAL"],
+  "type_kinds": ["PIE_TYPE_INT"],
+  "hooks": ["parse_expr", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_int_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_int_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_int_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_int_codegen_expr"]
+  }
+}

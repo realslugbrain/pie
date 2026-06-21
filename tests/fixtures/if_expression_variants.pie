@@ -1,0 +1,7 @@
+fn main() -> int:
+    let x: int -> if true: 1 else: 2 end
+    let y: int -> if false: 10 else: 20 end
+    let z: int -> if (3 > 2): 100 else: 200 end
+    println("x=", x, " y=", y, " z=", z, " inline=", if true: "yes" else: "no" end)
+    return 0
+end

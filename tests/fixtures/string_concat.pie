@@ -1,0 +1,4 @@
+greeting: string -> "Hello"
+name: string -> "World"
+message: string -> greeting ++ " " ++ name
+println(message)

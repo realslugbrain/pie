@@ -1,0 +1,8 @@
+fn main() -> int:
+    let add: (int, int) -> int -> fn(a: int, b: int) -> int:
+        return a + b
+    end
+
+    print(7)
+    return 7
+end

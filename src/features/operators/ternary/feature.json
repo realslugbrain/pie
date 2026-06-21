@@ -1,0 +1,26 @@
+{
+  "id": "operators.ternary",
+  "name": "Ternary Operator",
+  "group": "operators",
+  "version": "0.1.0",
+  "kind": "expr",
+  "deps": ["control.if"],
+  "tokens": ["PIE_TOK_QUESTION"],
+  "keywords": [],
+  "operators": ["?"],
+  "ast_nodes": ["PIE_EXPR_TERNARY"],
+  "type_kinds": [],
+  "hooks": ["parse_expr_infix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_infix": ["pie_feature_ternary_parse_infix"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_ternary_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_ternary_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_ternary_codegen_expr"]
+  }
+}

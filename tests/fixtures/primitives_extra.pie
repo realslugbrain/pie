@@ -1,0 +1,6 @@
+f: float -> 1.25 + 2.5
+c: char -> 'P'
+b: byte -> 255
+
+println("float=", f)
+println("char=", c, " byte=", b)

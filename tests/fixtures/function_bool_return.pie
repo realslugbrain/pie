@@ -1,0 +1,8 @@
+fn is_ready(value: int) -> bool:
+    return value == 4
+end
+
+fn main() -> int:
+    println("bool-return=", is_ready(4))
+    return 0
+end

@@ -1,0 +1,6 @@
+fn main() -> int:
+    while "yes":
+        println("bad")
+    end
+    return 0
+end

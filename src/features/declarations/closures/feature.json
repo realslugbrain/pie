@@ -1,0 +1,26 @@
+{
+  "id": "declarations.closures",
+  "name": "Closures",
+  "group": "declarations",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["declarations.bindings", "declarations.functions"],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_CLOSURE"],
+  "type_kinds": ["PIE_AST_TYPE_CLOSURE"],
+  "hooks": ["parse_expr_prefix", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_closures_parse_expr"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_closures_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_closures_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_closures_codegen_expr", "pie_feature_closures_codegen_closure_call"]
+  }
+}

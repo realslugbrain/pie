@@ -1,0 +1,9 @@
+fn main() -> int:
+    items: list(int) -> [10, 20, 30, 40, 50]
+    mut total: int -> 0
+    for item in items:
+        total <- total + item
+    end
+    println("total=", total)
+    return 0
+end

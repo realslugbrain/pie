@@ -1,0 +1,14 @@
+{
+  "id": "primitives.byte",
+  "name": "Bytes",
+  "group": "primitives",
+  "version": "0.1.0",
+  "kind": "type",
+  "deps": ["primitives.int"],
+  "tokens": ["PIE_TOK_BYTE_TYPE"],
+  "keywords": ["byte"],
+  "operators": [],
+  "ast_nodes": [],
+  "type_kinds": ["PIE_TYPE_BYTE"],
+  "hooks": []
+}

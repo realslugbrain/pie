@@ -1,0 +1,9 @@
+fn main() -> int:
+    let items: list(int) -> [10, 20, 30]
+    let mut count: int -> 0
+    for item in items:
+        count += 1
+    end
+    println(count)
+    return count
+end

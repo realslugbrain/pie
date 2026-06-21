@@ -1,0 +1,12 @@
+fn inspect(value: &mut string):
+    println("mut-ref=", value)
+end
+
+fn main() -> int:
+    mut name: string -> "Simon"
+    inspect(&mut name)
+    name <- "Grace"
+    println("after-mut-ref=", name)
+    return 0
+end
+

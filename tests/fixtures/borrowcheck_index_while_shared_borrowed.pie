@@ -1,0 +1,7 @@
+fn main() -> int:
+    let nums: list(int) -> [1, 2, 3]
+    let r: &list(int) -> &nums
+    let x: int -> nums[0]
+    println(x)
+    return 0
+end

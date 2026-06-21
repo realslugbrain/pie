@@ -1,0 +1,8 @@
+fn rename(value: &mut string):
+    value <- 42
+end
+
+fn main():
+    mut name: string -> "Simon"
+    rename(&mut name)
+end

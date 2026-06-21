@@ -1,0 +1,13 @@
+fn main() -> int:
+    mut n: int<32> -> 7
+    unsafe:
+        p: *int<32> -> &raw n
+        same1: *int<32> -> p + 0
+        same2: *int<32> -> 0 + p
+        same3: *int<32> -> same1 - 0
+        *same2 = 33
+        loaded: int<32> -> *same3
+        println("raw-arith=", loaded)
+    end
+    return 0
+end

@@ -1,0 +1,49 @@
+fn max[T: comparable](a: T, b: T) -> T:
+    if a > b:
+        return a
+    end
+    return b
+end
+
+fn min[T: comparable](a: T, b: T) -> T:
+    if a < b:
+        return a
+    end
+    return b
+end
+
+fn eq[T: comparable](a: T, b: T) -> bool:
+    return a == b
+end
+
+fn neq[T: comparable](a: T, b: T) -> bool:
+    return a != b
+end
+
+fn main() -> int:
+    # Test > with int
+    val1: int -> max(10, 20)
+    print(val1)
+
+    # Test < with int
+    val2: int -> min(10, 20)
+    print(val2)
+
+    # Test == with int
+    val3: bool -> eq(42, 42)
+    print(val3)
+
+    # Test != with int
+    val4: bool -> neq(42, 10)
+    print(val4)
+
+    # Test == with bool
+    val5: bool -> eq(true, true)
+    print(val5)
+
+    # Test != with bool
+    val6: bool -> neq(true, false)
+    print(val6)
+
+    return 0
+end

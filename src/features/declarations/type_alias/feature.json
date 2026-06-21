@@ -1,0 +1,23 @@
+{
+  "id": "declarations.type_alias",
+  "name": "Type Aliases",
+  "group": "declarations",
+  "version": "0.1.0",
+  "kind": "feature",
+  "deps": ["declarations.bindings"],
+  "tokens": ["PIE_TOK_TYPE"],
+  "keywords": ["type"],
+  "operators": [],
+  "ast_nodes": ["PIE_STMT_TYPE_ALIAS"],
+  "type_kinds": [],
+  "hooks": ["parse_top_level", "sema_stmt", "lower_stmt"],
+  "parse_hooks": {
+    "top_level": ["pie_feature_type_alias_parse_top_level"]
+  },
+  "sema_hooks": {
+    "stmt": ["pie_feature_type_alias_sema_stmt"]
+  },
+  "lower_hooks": {
+    "stmt": ["pie_feature_type_alias_lower_stmt"]
+  }
+}

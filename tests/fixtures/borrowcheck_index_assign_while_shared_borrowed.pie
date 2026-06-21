@@ -1,0 +1,6 @@
+fn main() -> int:
+    let nums: list(int) -> [1, 2, 3]
+    let r: &list(int) -> &nums
+    nums[0] = 10
+    return 0
+end

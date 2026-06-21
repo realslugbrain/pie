@@ -1,0 +1,26 @@
+{
+  "id": "control.if_expr",
+  "name": "If Expression",
+  "group": "control",
+  "version": "0.1.0",
+  "kind": "expr",
+  "deps": ["primitives.bool", "control.if"],
+  "tokens": [],
+  "keywords": [],
+  "operators": [],
+  "ast_nodes": ["PIE_EXPR_IF"],
+  "type_kinds": [],
+  "hooks": ["parse_expr", "sema_expr", "lower_expr", "codegen_expr"],
+  "parse_hooks": {
+    "expr_prefix": ["pie_feature_if_expr_parse_prefix"]
+  },
+  "sema_hooks": {
+    "expr": ["pie_feature_if_expr_sema_expr"]
+  },
+  "lower_hooks": {
+    "expr": ["pie_feature_if_expr_lower_expr"]
+  },
+  "asm_hooks": {
+    "expr": ["pie_feature_if_expr_codegen_expr"]
+  }
+}

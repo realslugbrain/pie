@@ -1,0 +1,4 @@
+fn main() -> int:
+    thread.spawn(42)
+    return 0
+end

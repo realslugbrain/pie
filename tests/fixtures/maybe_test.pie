@@ -1,0 +1,6 @@
+fn main() -> int:
+    a: bool -> maybe
+    b: bool -> maybe()
+    println("maybe-1=", a, " maybe-2=", b)
+    return 0
+end
