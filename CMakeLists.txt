@@ -2106,9 +2106,6 @@ set(PIE_EXPECTED_ERROR_TESTS_NEED_OUTPUT_CHECK
     pie_raw_store_requires_unsafe_error
     pie_ref_alias_escape_error
     pie_region_escape_error
-    pie_run_assert_eq_fail
-    pie_run_assert_fail
-    pie_run_string_index_oob
     pie_scope_leak_error
     pie_shared_then_mut_borrow_error
     pie_struct_assign_while_borrowed_error
@@ -2122,7 +2119,6 @@ set(PIE_EXPECTED_ERROR_TESTS_NEED_OUTPUT_CHECK
     pie_thread_channel_send_type_error
     pie_thread_join_type_error
     pie_thread_spawn_type_error
-    pie_try_error
     pie_undefined_function_error
     pie_undefined_variable_error
     pie_unknown_std_require_error
