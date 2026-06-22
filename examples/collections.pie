@@ -1,0 +1,17 @@
+fn main() -> int:
+    let numbers: list(int) -> [3, 1, 4]
+    numbers.push(2)
+    numbers.sort()
+
+    let mut total: int -> 0
+    for number in numbers:
+        total += number
+    end
+    println("List total: ", total)
+
+    let scores: map -> {"Simon": 95, "Grace": 98}
+    scores.put("LTT", 91)
+    println("Simon: ", scores.get("Simon"))
+    println("LTT: ", scores.get("LTT"))
+    return 0
+end

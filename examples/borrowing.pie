@@ -1,0 +1,15 @@
+fn show(value: &string):
+    println("Current name: ", value)
+end
+
+fn rename(value: &mut string, next: string):
+    value <- next
+end
+
+fn main() -> int:
+    let mut name: string -> "Simon"
+    show(&name)
+    rename(&mut name, "Grace")
+    show(&name)
+    return 0
+end

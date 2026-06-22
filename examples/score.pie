@@ -1,0 +1,19 @@
+fn main() -> int:
+    let scores: list(int) -> [18, 20, 15, 19, 17]
+    let entries: int -> len(scores)
+    let mut total: int -> 0
+    let mut highest: int -> 0
+
+    for score in scores:
+        total += score
+        if score > highest:
+            highest <- score
+        end
+    end
+
+    println("Entries: ", entries)
+    println("Total: ", total)
+    println("Average: ", total / entries)
+    println("Highest: ", highest)
+    return 0
+end

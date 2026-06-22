@@ -47,6 +47,19 @@ PieSemaResult pie_feature_structs_sema_stmt(PieSemaContext *ctx,
     if (ctx->api->check_expr(ctx->sema, stmt->expr, &val_type) != PIE_SEMA_OK) {
       return PIE_SEMA_ERROR;
     }
+    if (strcmp(stmt->assign_op, "=") != 0) {
+      PieType field_type;
+      if (ctx->api->check_expr(ctx->sema, stmt->field_target, &field_type) !=
+          PIE_SEMA_OK) {
+        return PIE_SEMA_ERROR;
+      }
+      if (field_type.kind != PIE_TYPE_INT || val_type.kind != PIE_TYPE_INT) {
+        ctx->api->errorf(ctx->sema,
+                         "compound field assignment '%s' requires int operands",
+                         stmt->assign_op);
+        return PIE_SEMA_ERROR;
+      }
+    }
     return PIE_SEMA_OK;
   }
   return PIE_SEMA_NO_MATCH;

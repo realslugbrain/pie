@@ -144,6 +144,57 @@ end
   assert.equal(diagnostics.filter((item) => item.code === 'type-mismatch' || item.code === 'operator-type-mismatch').length, 0);
 });
 
+test('semantic analyzer accepts comparisons as logical operands', () => {
+  const source = `fn main() -> int:
+    let by_three: int -> 3
+    let by_five: int -> 5
+    if by_three == 3 and by_five == 5:
+        println("FizzBuzz")
+    end
+    return 0
+end
+`;
+  const parsed = parseDocument('file:///logical_comparisons.pie', source);
+  const diagnostics = analyzer.analyzeParsed(parsed, [parsed]);
+  assert.equal(diagnostics.some((item) => item.code === 'operator-type-mismatch'), false);
+});
+
+test('semantic analyzer understands method arity and struct-field arithmetic', () => {
+  const source = `struct Counter:
+    value: int
+end
+
+fn Counter.add(self: &mut Counter, amount: int) -> int:
+    let next: int -> self.value + amount
+    self.value = next
+    return next
+end
+
+fn main() -> int:
+    let mut counter: Counter -> new Counter(value: 1)
+    let result: int -> counter.add(2)
+    return result
+end
+`;
+  const parsed = parseDocument('file:///method_field_arithmetic.pie', source);
+  const diagnostics = analyzer.analyzeParsed(parsed, [parsed]);
+  assert.equal(diagnostics.some((item) => ['type-mismatch', 'operator-type-mismatch', 'argument-count-mismatch'].includes(item.code)), false);
+});
+
+test('semantic analyzer rejects non-boolean logical operands', () => {
+  const source = `fn main() -> int:
+    let count: int -> 3
+    if count and true:
+        println(count)
+    end
+    return 0
+end
+`;
+  const parsed = parseDocument('file:///logical_type_error.pie', source);
+  const diagnostics = analyzer.analyzeParsed(parsed, [parsed]);
+  assert.ok(diagnostics.some((item) => item.code === 'operator-type-mismatch'));
+});
+
 test('semantic analyzer reports moved values and borrow conflicts', () => {
   const source = `fn take(value: string):
     println(value)

@@ -227,6 +227,16 @@ function inferLiteralType(expr, parsed, allDocuments, line) {
     if (type) return 'invalid';
     return 'int';
   }
+  const fieldMatch = value.match(/^([A-Za-z_]\w*)\.([A-Za-z_]\w*)$/);
+  if (fieldMatch) {
+    const owner = resolveLocalOrGlobal(parsed, allDocuments, fieldMatch[1], line);
+    const ownerType = baseType(owner?.type || '');
+    const documents = [parsed, ...(allDocuments || [])];
+    const definition = documents.flatMap((document) => document.types || [])
+      .find((type) => type.name === ownerType);
+    const field = definition?.children?.find((child) => child.name === fieldMatch[2]);
+    if (field?.type) return field.type;
+  }
   const callMatch = value.match(/^([A-Za-z_]\w*)\s*\((.*)\)$/);
   if (callMatch) {
     const symbol = resolveLocalOrGlobal(parsed, allDocuments, callMatch[1], line);
@@ -622,6 +632,7 @@ function analyzeCallArity(parsed, allDocuments) {
   for (let line = 0; line < parsed.lines.length; line += 1) {
     const raw = parsed.lines[line];
     const cleaned = stripComment(raw);
+    if (/^\s*(?:pub\s+)?(?:unsafe\s+)?fn\b/.test(cleaned)) continue;
     for (const match of cleaned.matchAll(/\b([A-Za-z_]\w*)\s*\(([^()]*)\)/g)) {
       const name = match[1];
       if (['if', 'while', 'for', 'match', 'return', 'new'].includes(name)) continue;
@@ -629,8 +640,10 @@ function analyzeCallArity(parsed, allDocuments) {
       if (!fn?.data?.params) continue;
       const argsText = match[2].trim();
       const args = argsText ? language.splitTopLevel(argsText) : [];
-      if (args.length !== fn.data.params.length) {
-        diagnostics.push(diagnostic(line, raw.indexOf(name, match.index), name.length, `Expected ${fn.data.params.length} argument${fn.data.params.length === 1 ? '' : 's'} for '${name}', got ${args.length}.`, 'argument-count-mismatch', DiagnosticSeverity.Warning));
+      const isMethodCall = cleaned[match.index - 1] === '.' && fn.kind === SymbolKind.Method;
+      const expected = fn.data.params.length - (isMethodCall ? 1 : 0);
+      if (args.length !== expected) {
+        diagnostics.push(diagnostic(line, raw.indexOf(name, match.index), name.length, `Expected ${expected} argument${expected === 1 ? '' : 's'} for '${name}', got ${args.length}.`, 'argument-count-mismatch', DiagnosticSeverity.Warning));
       }
     }
   }
@@ -646,6 +659,114 @@ function isUnaryReferenceOperator(cleaned, op, opIndex, leftText) {
   if (/(?:->|<-|=|:|,|\(|\[|\{|return)$/.test(before)) return true;
   if (/^\s*(?:let\s+)?(?:mut\s+)?[A-Za-z_]\w*\s*:\s*$/.test(before)) return true;
   return false;
+}
+
+function topLevelLogicalOperators(value) {
+  const operators = [];
+  let round = 0;
+  let square = 0;
+  let brace = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    const character = value[index];
+    if (character === '(') round += 1;
+    else if (character === ')') round -= 1;
+    else if (character === '[') square += 1;
+    else if (character === ']') square -= 1;
+    else if (character === '{') brace += 1;
+    else if (character === '}') brace -= 1;
+    if (round !== 0 || square !== 0 || brace !== 0) continue;
+    const match = value.slice(index).match(/^(and|or)\b/);
+    if (!match || (index > 0 && /[A-Za-z0-9_]/.test(value[index - 1]))) continue;
+    operators.push({ index, operator: match[1] });
+    index += match[1].length - 1;
+  }
+  return operators;
+}
+
+function logicalOperandBounds(value, operatorIndex, operatorLength) {
+  let start = 0;
+  let round = 0;
+  let square = 0;
+  let brace = 0;
+  for (let index = operatorIndex - 1; index >= 0; index -= 1) {
+    const character = value[index];
+    if (character === ')') { round += 1; continue; }
+    if (character === ']') { square += 1; continue; }
+    if (character === '}') { brace += 1; continue; }
+    if (character === '(') {
+      if (round === 0) { start = index + 1; break; }
+      round -= 1;
+      continue;
+    }
+    if (character === '[') {
+      if (square === 0) { start = index + 1; break; }
+      square -= 1;
+      continue;
+    }
+    if (character === '{') {
+      if (brace === 0) { start = index + 1; break; }
+      brace -= 1;
+      continue;
+    }
+    if (round !== 0 || square !== 0 || brace !== 0) continue;
+    const pair = value.slice(Math.max(0, index - 1), index + 1);
+    const assignment = character === '='
+      && value[index - 1] !== '='
+      && !/[!<>]/.test(value[index - 1] || '')
+      && value[index + 1] !== '=';
+    if (character === ',' || character === ':' || character === '?' || pair === '->' || pair === '<-' || assignment) {
+      start = index + 1;
+      break;
+    }
+  }
+
+  let end = value.length;
+  round = 0;
+  square = 0;
+  brace = 0;
+  for (let index = operatorIndex + operatorLength; index < value.length; index += 1) {
+    const character = value[index];
+    if (character === '(') { round += 1; continue; }
+    if (character === '[') { square += 1; continue; }
+    if (character === '{') { brace += 1; continue; }
+    if (character === ')') {
+      if (round === 0) { end = index; break; }
+      round -= 1;
+      continue;
+    }
+    if (character === ']') {
+      if (square === 0) { end = index; break; }
+      square -= 1;
+      continue;
+    }
+    if (character === '}') {
+      if (brace === 0) { end = index; break; }
+      brace -= 1;
+      continue;
+    }
+    if (round === 0 && square === 0 && brace === 0 && (character === ',' || character === ':' || character === '?')) {
+      end = index;
+      break;
+    }
+  }
+  return { start, end };
+}
+
+function logicalOperations(value) {
+  const operations = [];
+  for (const match of value.matchAll(/\b(and|or)\b/g)) {
+    const operator = match[1];
+    const index = match.index;
+    const bounds = logicalOperandBounds(value, index, operator.length);
+    let left = value.slice(bounds.start, index).trim().replace(/^(?:if|elif|while|return)\s+/, '');
+    let right = value.slice(index + operator.length, bounds.end).trim();
+    const previous = topLevelLogicalOperators(left).pop();
+    if (previous) left = left.slice(previous.index + previous.operator.length).trim();
+    const next = topLevelLogicalOperators(right)[0];
+    if (next) right = right.slice(0, next.index).trim();
+    operations.push({ operator, index, left, right });
+  }
+  return operations;
 }
 
 function analyzeExpressionOperators(parsed, allDocuments) {
@@ -669,10 +790,10 @@ function analyzeExpressionOperators(parsed, allDocuments) {
       const actual = typeOf(expr, line);
       if (actual && actual !== 'bool') diagnostics.push(diagnostic(line, match.index, match[0].length, `Operator 'not' requires bool, found ${actual}.`, 'operator-type-mismatch'));
     }
-    for (const match of cleaned.matchAll(/([^\s,()]+)\s+(and|or)\s+([^\s,()]+)/g)) {
-      const left = typeOf(match[1], line);
-      const right = typeOf(match[3], line);
-      if ((left && left !== 'bool') || (right && right !== 'bool')) diagnostics.push(diagnostic(line, raw.indexOf(match[2], match.index), match[2].length, `Operator '${match[2]}' requires bool operands.`, 'operator-type-mismatch'));
+    for (const operation of logicalOperations(cleaned)) {
+      const left = typeOf(operation.left, line);
+      const right = typeOf(operation.right, line);
+      if ((left && left !== 'bool') || (right && right !== 'bool')) diagnostics.push(diagnostic(line, operation.index, operation.operator.length, `Operator '${operation.operator}' requires bool operands.`, 'operator-type-mismatch'));
     }
     for (const match of cleaned.matchAll(/([^\s,()]+)\s*(<<|>>|[&|^])\s*([^\s,()]+)/g)) {
       const op = match[2];

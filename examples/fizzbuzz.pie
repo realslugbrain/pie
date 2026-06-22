@@ -1,0 +1,15 @@
+fn main() -> int:
+    for number in 1..=30:
+        if number % 3 == 0 and number % 5 == 0:
+            println("FizzBuzz")
+        elif number % 3 == 0:
+            println("Fizz")
+        elif number % 5 == 0:
+            println("Buzz")
+        else:
+            println(number)
+        end
+    end
+
+    return 0
+end

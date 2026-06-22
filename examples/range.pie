@@ -1,0 +1,70 @@
+const LIMIT: int = 1000
+const FIRST_SUM: int = 31375
+const SECOND_SUM: int = 93875
+const THIRD_SUM: int = 156375
+const FOURTH_SUM: int = 218875
+
+fn sum_range(first: int, last: int) -> int:
+    let mut value: int -> first
+    let mut total: int -> 0
+    while value <= last:
+        total += value
+        value += 1
+    end
+    return total
+end
+
+fn expected_sum(last: int) -> int:
+    return last * (last + 1) / 2
+end
+
+fn main() -> int:
+    let first_quarter: () -> int -> fn() -> int:
+        let result: int -> sum_range(1, 250)
+        println("worker[1] range=1..250 sum=", result)
+        return 0
+    end
+
+    let second_quarter: () -> int -> fn() -> int:
+        let result: int -> sum_range(251, 500)
+        println("worker[2] range=251..500 sum=", result)
+        return 0
+    end
+
+    let third_quarter: () -> int -> fn() -> int:
+        let result: int -> sum_range(501, 750)
+        println("worker[3] range=501..750 sum=", result)
+        return 0
+    end
+
+    let fourth_quarter: () -> int -> fn() -> int:
+        let result: int -> sum_range(751, 1000)
+        println("worker[4] range=751..1000 sum=", result)
+        return 0
+    end
+
+    let first_handle: thread -> thread.spawn(first_quarter)
+    let second_handle: thread -> thread.spawn(second_quarter)
+    let third_handle: thread -> thread.spawn(third_quarter)
+    let fourth_handle: thread -> thread.spawn(fourth_quarter)
+
+    thread.join(first_handle)
+    thread.join(second_handle)
+    thread.join(third_handle)
+    thread.join(fourth_handle)
+    println("workers.joined=4")
+
+    let reduced: int -> FIRST_SUM + SECOND_SUM + THIRD_SUM + FOURTH_SUM
+    let expected: int -> expected_sum(LIMIT)
+    println("sum.reduced=", reduced)
+    println("sum.expected=", expected)
+
+    if reduced == expected:
+        println("sum.valid=true")
+    else:
+        println("sum.valid=false")
+    end
+
+    assert_eq(reduced, 500500)
+    return 0
+end

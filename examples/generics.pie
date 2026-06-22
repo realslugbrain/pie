@@ -1,0 +1,15 @@
+fn maximum[T: comparable](left: T, right: T) -> T:
+    let result: T -> if left > right: left else: right end
+    return result
+end
+
+fn identity[T](value: T) -> T:
+    return value
+end
+
+fn main() -> int:
+    let answer: int -> identity(69)
+    let larger: int -> maximum(17, answer)
+    println("Larger value: ", larger)
+    return 0
+end

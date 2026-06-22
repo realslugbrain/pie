@@ -1047,6 +1047,13 @@ set_tests_properties(pie_run_struct_basic PROPERTIES
     PASS_REGULAR_EXPRESSION "10.*20.*30"
 )
 add_test(
+    NAME pie_run_struct_field_compound
+    COMMAND pie run "${PIE_ROOT}/tests/fixtures/struct_field_compound.pie"
+)
+set_tests_properties(pie_run_struct_field_compound PROPERTIES
+    PASS_REGULAR_EXPRESSION "field-compound=1"
+)
+add_test(
     NAME pie_run_string_concat
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/string_concat.pie"
 )

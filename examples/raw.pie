@@ -1,0 +1,16 @@
+unsafe fn load(ptr: *int<32>) -> int<32>:
+    return *ptr
+end
+
+fn main() -> int:
+    let mut value: int<32> -> 21
+
+    unsafe:
+        let pointer: *int<32> -> &raw value
+        *pointer = 69
+        let loaded: int<32> -> load(pointer)
+        println("Raw memory value: ", loaded)
+    end
+
+    return 0
+end

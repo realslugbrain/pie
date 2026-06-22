@@ -48,10 +48,37 @@ PieAsmGenResult pie_feature_structs_codegen_stmt(PieAsmCodegenContext *ctx,
       api->emit(cg, "    movsd [rax+%d], xmm0\n",
                 stmt->field_target->field_offset);
     } else {
-      api->emit(cg, "    mov rcx, rax\n");
-      api->emit(cg, "    mov rax, [rbp-%d]\n", obj_sym.offset);
-      api->emit(cg, "    mov [rax+%d], rcx\n",
-                stmt->field_target->field_offset);
+      const char *op = stmt->assign_op;
+      if (strcmp(op, "=") == 0) {
+        api->emit(cg, "    mov rcx, rax\n");
+        api->emit(cg, "    mov rax, [rbp-%d]\n", obj_sym.offset);
+        api->emit(cg, "    mov [rax+%d], rcx\n",
+                  stmt->field_target->field_offset);
+      } else {
+        api->emit(cg, "    mov rcx, rax\n");
+        api->emit(cg, "    mov rbx, [rbp-%d]\n", obj_sym.offset);
+        api->emit(cg, "    mov rax, [rbx+%d]\n",
+                  stmt->field_target->field_offset);
+        if (strcmp(op, "+=") == 0) {
+          api->emit(cg, "    add rax, rcx\n");
+        } else if (strcmp(op, "-=") == 0) {
+          api->emit(cg, "    sub rax, rcx\n");
+        } else if (strcmp(op, "*=") == 0) {
+          api->emit(cg, "    imul rax, rcx\n");
+        } else if (strcmp(op, "/=") == 0) {
+          api->emit(cg, "    cqo\n");
+          api->emit(cg, "    idiv rcx\n");
+        } else if (strcmp(op, "%=") == 0) {
+          api->emit(cg, "    cqo\n");
+          api->emit(cg, "    idiv rcx\n");
+          api->emit(cg, "    mov rax, rdx\n");
+        } else {
+          api->errorf(cg, "unsupported field assignment operator '%s'", op);
+          return PIE_ASM_GEN_ERROR;
+        }
+        api->emit(cg, "    mov [rbx+%d], rax\n",
+                  stmt->field_target->field_offset);
+      }
     }
     return PIE_ASM_GEN_OK;
   }

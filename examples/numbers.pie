@@ -1,0 +1,141 @@
+enum NumberKind:
+    case Prime
+    case Perfect
+    case Abundant(int)
+    case Deficient(int)
+end
+
+fn is_prime(value: int) -> bool:
+    if value < 2:
+        return false
+    end
+    if value == 2:
+        return true
+    end
+    if value % 2 == 0:
+        return false
+    end
+
+    let mut divisor: int -> 3
+    while divisor ** 2 <= value:
+        if value % divisor == 0:
+            return false
+        end
+        divisor += 2
+    end
+    return true
+end
+
+fn sum_proper_divisors(value: int) -> int:
+    if value <= 1:
+        return 0
+    end
+
+    let mut divisor: int -> 1
+    let mut total: int -> 0
+    while divisor < value:
+        if value % divisor == 0:
+            total += divisor
+        end
+        divisor += 1
+    end
+    return total
+end
+
+fn classify(value: int) -> NumberKind:
+    if is_prime(value):
+        return NumberKind.Prime
+    end
+
+    let divisor_sum: int -> sum_proper_divisors(value)
+    if divisor_sum == value:
+        return NumberKind.Perfect
+    elif divisor_sum > value:
+        return NumberKind.Abundant(divisor_sum - value)
+    else:
+        return NumberKind.Deficient(value - divisor_sum)
+    end
+end
+
+fn greatest_common_divisor(left: int, right: int) -> int:
+    let mut a: int -> left
+    let mut b: int -> right
+    while b != 0:
+        a, b <- b, a % b
+    end
+    return a
+end
+
+fn least_common_multiple(left: int, right: int) -> int:
+    return left / greatest_common_divisor(left, right) * right
+end
+
+fn difference(larger: int, smaller: int) -> int:
+    return larger - smaller
+end
+
+fn describe(value: int):
+    let kind: NumberKind -> classify(value)
+    match kind:
+        case NumberKind.Prime:
+            println("number[", value, "] kind=prime")
+        case NumberKind.Perfect:
+            println("number[", value, "] kind=perfect")
+        case NumberKind.Abundant(excess):
+            println("number[", value, "] kind=abundant delta=", excess)
+        case NumberKind.Deficient(missing):
+            println("number[", value, "] kind=deficient delta=", missing)
+    end
+end
+
+fn main() -> int:
+    let samples: list(int) -> [6, 12, 13, 28, 30]
+    for sample in samples:
+        describe(sample)
+    end
+
+    let primes: list(int) -> []
+    let mut prime_count: int -> 0
+    let mut prime_sum: int -> 0
+    let mut previous: int -> 0
+    let mut largest_gap: int -> 0
+    let mut twin_pairs: int -> 0
+
+    for candidate in 2..=100:
+        if is_prime(candidate):
+            primes.push(candidate)
+            prime_count += 1
+            prime_sum += candidate
+
+            if previous > 0:
+                let gap: int -> difference(candidate, previous)
+                if gap > largest_gap:
+                    largest_gap <- gap
+                end
+                if gap == 2:
+                    twin_pairs += 1
+                end
+            end
+            previous <- candidate
+        end
+    end
+
+    println("primes.limit=100")
+    println("primes.count=", prime_count)
+    println("primes.sum=", prime_sum)
+    println("primes.max_gap=", largest_gap)
+    println("primes.twin_pairs=", twin_pairs)
+    println("primes.first=", primes[0])
+    println("primes.last=", primes[prime_count - 1])
+
+    let gcd: int -> greatest_common_divisor(84, 126)
+    let lcm: int -> least_common_multiple(21, 6)
+    println("gcd[84,126]=", gcd)
+    println("lcm[21,6]=", lcm)
+
+    assert_eq(prime_count, 25)
+    assert_eq(prime_sum, 1060)
+    assert_eq(gcd, 42)
+    assert_eq(lcm, 42)
+    return 0
+end

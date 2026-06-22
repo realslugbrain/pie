@@ -1,0 +1,19 @@
+struct Counter:
+    value: int
+end
+
+fn Counter.update(self: &mut Counter):
+    self.value += 5
+    self.value *= 2
+    self.value -= 4
+    self.value /= 2
+    self.value %= 6
+end
+
+fn main() -> int:
+    let mut counter: Counter -> new Counter(value: 10)
+    counter.update()
+    println("field-compound=", counter.value)
+    assert_eq(counter.value, 1)
+    return 0
+end

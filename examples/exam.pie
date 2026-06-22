@@ -1,0 +1,41 @@
+const PASSING_SCORE: int = 60
+
+struct Exam:
+    subject: string
+    score: int
+end
+
+enum ExamResult:
+    case Passed(int)
+    case Failed(int)
+end
+
+fn evaluate(score: int) -> ExamResult:
+    if score >= PASSING_SCORE:
+        return ExamResult.Passed(score)
+    end
+    return ExamResult.Failed(score)
+end
+
+fn main() -> int:
+    let exam: Exam -> new Exam(subject: "Compilers", score: 87)
+    let scores: list(int) -> [87, 74, 91, 68]
+    let mut total: int -> 0
+
+    for score in scores:
+        total += score
+    end
+
+    let average: int -> total / 4
+    println(exam.subject, " average: ", average)
+
+    let result: ExamResult -> evaluate(average)
+    match result:
+        case ExamResult.Passed(value):
+            println("Passed with ", value)
+        case ExamResult.Failed(value):
+            println("Try again; score was ", value)
+    end
+
+    return 0
+end

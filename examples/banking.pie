@@ -1,0 +1,103 @@
+struct Account:
+    id: int
+    owner: string
+    balance: int
+    transfers: int
+end
+
+enum TransferResult:
+    case Completed(int)
+    case Rejected(int)
+end
+
+fn Account.deposit(self: &mut Account, amount: int):
+    self.balance += amount
+    self.transfers += 1
+end
+
+fn Account.withdraw(self: &mut Account, amount: int) -> TransferResult:
+    if amount <= 0:
+        return TransferResult.Rejected(1)
+    end
+
+    let total: int -> amount + 2
+    let remaining: int -> self.balance - total
+    println("withdraw: balance=", self.balance, " amount=", amount, " remaining=", remaining)
+    if remaining < 100:
+        return TransferResult.Rejected(2)
+    end
+
+    self.balance -= total
+    self.transfers += 1
+    return TransferResult.Completed(amount)
+end
+
+fn print_account(account: &Account):
+    println("account[", account.id, "] owner=", account.owner)
+    println("  balance=", account.balance, " transfers=", account.transfers)
+end
+
+fn print_rejection(label: string, code: int):
+    if code == 1:
+        println("transfer[", label, "] status=rejected code=invalid_amount")
+    elif code == 2:
+        println("transfer[", label, "] status=rejected code=minimum_balance")
+    else:
+        println("transfer[", label, "] status=rejected code=unknown")
+    end
+end
+
+fn main() -> int:
+    let mut checking: Account -> new Account(
+        id: 1001,
+        owner: "Ada",
+        balance: 900,
+        transfers: 0
+    )
+    let mut savings: Account -> new Account(
+        id: 2001,
+        owner: "Grace",
+        balance: 350,
+        transfers: 0
+    )
+
+    println("ledger.open")
+    print_account(&checking)
+    print_account(&savings)
+
+    let rent: TransferResult -> checking.withdraw(250)
+    match rent:
+        case TransferResult.Completed(amount):
+            savings.deposit(amount)
+            println("transfer[rent] status=ok amount=", amount)
+        case TransferResult.Rejected(code):
+            print_rejection("rent", code)
+    end
+
+    let oversized: TransferResult -> savings.withdraw(700)
+    match oversized:
+        case TransferResult.Completed(amount):
+            checking.deposit(amount)
+            println("transfer[oversized] status=ok amount=", amount)
+        case TransferResult.Rejected(code):
+            print_rejection("oversized", code)
+    end
+
+    let refund: TransferResult -> savings.withdraw(75)
+    match refund:
+        case TransferResult.Completed(amount):
+            checking.deposit(amount)
+            println("transfer[refund] status=ok amount=", amount)
+        case TransferResult.Rejected(code):
+            print_rejection("refund", code)
+    end
+
+    println("ledger.close")
+    print_account(&checking)
+    print_account(&savings)
+
+    let conserved: int -> checking.balance + savings.balance
+    println("ledger.balance=", conserved)
+    assert_eq(conserved, 1246)
+    return 0
+end

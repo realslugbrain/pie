@@ -1,0 +1,19 @@
+fn main() -> int:
+    let first_worker: () -> int -> fn() -> int:
+        println("worker one handled a request")
+        return 0
+    end
+
+    let second_worker: () -> int -> fn() -> int:
+        println("worker two handled a request")
+        return 0
+    end
+
+    let first: thread -> thread.spawn(first_worker)
+    let second: thread -> thread.spawn(second_worker)
+
+    thread.join(first)
+    thread.join(second)
+    println("all workers finished")
+    return 0
+end
