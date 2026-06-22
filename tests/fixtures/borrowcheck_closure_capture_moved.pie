@@ -1,6 +1,6 @@
 fn main() -> int:
     let s: string -> "hello"
-    let f: () -> string -> fn() -> string:
+    let f: () => string -> fn() -> string:
         return s
     end
     println("ok")

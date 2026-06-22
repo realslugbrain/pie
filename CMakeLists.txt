@@ -1314,6 +1314,13 @@ set_tests_properties(pie_pub_visibility_private_error PROPERTIES
     PASS_REGULAR_EXPRESSION "undefined function 'private_helper'"
 )
 add_test(
+    NAME pie_run_export_visibility
+    COMMAND pie run "${PIE_ROOT}/tests/packages/module_export_visibility/src/main.pie"
+)
+set_tests_properties(pie_run_export_visibility PROPERTIES
+    PASS_REGULAR_EXPRESSION "result=15"
+)
+add_test(
     NAME pie_run_const_declaration
     COMMAND pie run "${PIE_ROOT}/tests/fixtures/const_declaration.pie"
 )
@@ -1906,6 +1913,7 @@ set(PIE_EXPECTED_PASS_TESTS
     pie_run_struct_methods
     pie_run_if_expression_variants
     pie_run_pub_visibility
+    pie_run_export_visibility
     pie_run_const_declaration
     pie_run_string_interpolation
     pie_run_for_multi_var

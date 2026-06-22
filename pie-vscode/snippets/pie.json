@@ -162,7 +162,7 @@
   },
   "Constant": {
     "prefix": "const",
-    "body": "const ${1:NAME}: ${2:int} = ${3:value}",
+    "body": "const ${1:NAME}: ${2:int} -> ${3:value}",
     "description": "Create a constant"
   },
   "Require module": {
@@ -300,7 +300,7 @@
   "Thread spawn": {
     "prefix": "spawn",
     "body": [
-      "let ${1:worker}: () -> int -> fn() -> int:",
+      "let ${1:worker}: () => int -> fn() -> int:",
       "    ${2:println(\"child\")}",
       "    return 0",
       "end",

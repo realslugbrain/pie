@@ -243,7 +243,7 @@
         },
         {
           "name": "meta.function.definition.pie",
-          "match": "\\b(?:(pub)\\s+)?(?:(unsafe)\\s+)?(fn)\\s+(?:([A-Za-z_][A-Za-z0-9_]*)\\s*(\\.))?([A-Za-z_][A-Za-z0-9_]*)",
+          "match": "\\b(?:(pub|export)\\s+)?(?:(unsafe)\\s+)?(fn)\\s+(?:([A-Za-z_][A-Za-z0-9_]*)\\s*(\\.))?([A-Za-z_][A-Za-z0-9_]*)",
           "captures": {
             "1": {
               "name": "storage.modifier.visibility.pie"
@@ -267,12 +267,15 @@
         },
         {
           "name": "meta.type.definition.pie",
-          "match": "\\b(struct|enum|type)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "match": "\\b(?:(pub|export)\\s+)?(struct|enum|type)\\s+([A-Za-z_][A-Za-z0-9_]*)",
           "captures": {
             "1": {
-              "name": "storage.type.pie"
+              "name": "storage.modifier.visibility.pie"
             },
             "2": {
+              "name": "storage.type.pie"
+            },
+            "3": {
               "name": "entity.name.type.pie"
             }
           }
@@ -360,7 +363,7 @@
         },
         {
           "name": "storage.modifier.pie",
-          "match": "\\b(?:const|let|mut|pub|raw|region|unsafe|where)\\b"
+          "match": "\\b(?:const|let|mut|pub|export|raw|region|unsafe|where)\\b"
         },
         {
           "name": "keyword.operator.word.pie",
@@ -444,7 +447,7 @@
       "patterns": [
         {
           "name": "keyword.operator.assignment.pie",
-          "match": "(?:\\*\\*=|\\+=|-=|\\*=|/=|%=|<-|->|=)"
+          "match": "(?:\\*\\*=|\\+=|-=|\\*=|/=|%=|<-|->|=>|=)"
         },
         {
           "name": "keyword.operator.comparison.pie",

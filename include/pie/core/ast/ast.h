@@ -76,6 +76,7 @@ typedef struct PieEnumDef {
   PieEnumVariant variants[PIE_ENUM_MAX_VARIANTS];
   size_t variant_count;
   int is_pub;
+  int is_export;
 } PieEnumDef;
 
 #define PIE_AST_TUPLE_MAX_ELEMENTS 8
@@ -183,6 +184,7 @@ typedef struct PieStructDef {
   size_t field_count;
   size_t field_capacity;
   int is_pub;
+  int is_export;
 } PieStructDef;
 
 typedef struct PieConstDef {
@@ -357,6 +359,7 @@ typedef struct PieFunction {
   PieAstType return_type;
   int is_unsafe;
   int is_pub;
+  int is_export;
   char **param_names;
   PieAstType *param_types;
   size_t param_count;

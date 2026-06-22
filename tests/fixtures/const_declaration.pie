@@ -1,7 +1,7 @@
-const MAX: int = 100
-const MIN: int = 0
-const NAME: string = "hello"
-const FLAG: bool = true
+const MAX: int -> 100
+const MIN: int -> 0
+const NAME: string -> "hello"
+const FLAG: bool -> true
 
 fn main() -> int:
     let x: int -> MAX + MIN

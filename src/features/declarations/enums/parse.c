@@ -32,8 +32,12 @@ PieParseResult pie_feature_enums_parse_top_level(PieParseContext *ctx,
 
   size_t start = api->pos(parser);
   int is_pub = 0;
+  int is_export = 0;
   if (api->match(parser, PIE_TOK_PUB)) {
     is_pub = 1;
+  }
+  if (api->match(parser, PIE_TOK_EXPORT)) {
+    is_export = 1;
   }
 
   if (!api->match(parser, PIE_TOK_ENUM)) {
@@ -54,6 +58,7 @@ PieParseResult pie_feature_enums_parse_top_level(PieParseContext *ctx,
   memset(&def, 0, sizeof(def));
   def.name = api->copy_token_text(name_token);
   def.is_pub = is_pub;
+  def.is_export = is_export;
   if (!def.name) {
     pie_diag_error(api->diag(parser), "out of memory while storing enum name");
     return PIE_PARSE_ERROR;

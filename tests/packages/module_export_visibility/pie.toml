@@ -1,0 +1,5 @@
+[package]
+name = "module_export_visibility"
+version = "1.0.0"
+description = "Test export visibility"
+authors = ["Test"]

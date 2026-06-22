@@ -5,7 +5,7 @@ const { DiagnosticSeverity, SymbolKind } = require('vscode-languageserver/node')
 const KEYWORDS = new Set([
   'and', 'as', 'assert', 'assert_eq', 'auto', 'bool', 'break', 'byte', 'case',
   'char', 'const', 'continue', 'defer', 'do', 'elif', 'else', 'end', 'enum',
-  'false', 'float', 'fn', 'for', 'format', 'from', 'if', 'import', 'in', 'int',
+  'export', 'false', 'float', 'fn', 'for', 'format', 'from', 'if', 'import', 'in', 'int',
   'let', 'list', 'map', 'match', 'mut', 'new', 'not', 'null', 'or', 'package',
   'pass', 'print', 'println', 'pub', 'raw', 'region', 'require', 'return', 'self',
   'string', 'struct', 'true', 'try', 'type', 'unsafe', 'void', 'where', 'while',
@@ -73,7 +73,7 @@ const METHODS = {
 
 const OPERATORS = [
   '**=', '..=', '==', '!=', '<=', '>=', '+=', '-=', '*=', '/=', '%=', '++',
-  '--', '**', '..', '<<', '>>', '<-', '->', '::', '+', '-', '*', '/', '%',
+  '--', '**', '..', '<<', '>>', '<-', '->', '=>', '::', '+', '-', '*', '/', '%',
   '&', '=', '!', '<', '>', '?', '|', '^', '~', '.', ':', ',', '(', ')', '[',
   ']', '{', '}',
 ];
@@ -325,9 +325,9 @@ function blockKind(cleaned) {
   const line = cleaned.trim();
   if (!line || !line.endsWith(':')) return undefined;
   if (line === ':') return 'block';
-  if (/^(?:pub\s+)?(?:unsafe\s+)?fn\b/.test(line) || /\bfn\s*\([^)]*\).*:$/.test(line)) return 'function';
-  if (/^struct\b/.test(line)) return 'struct';
-  if (/^enum\b/.test(line)) return 'enum';
+  if (/^(?:pub\s+|export\s+)?(?:unsafe\s+)?fn\b/.test(line) || /\bfn\s*\([^)]*\).*:$/.test(line)) return 'function';
+  if (/^(?:pub\s+|export\s+)?struct\b/.test(line)) return 'struct';
+  if (/^(?:pub\s+|export\s+)?enum\b/.test(line)) return 'enum';
   if (/^if\b/.test(line)) return 'if';
   if (/^(?::[A-Za-z_]\w*\s+)?while\b/.test(line)) return 'while';
   if (/^(?::[A-Za-z_]\w*\s+)?for\b/.test(line)) return 'for';
@@ -372,7 +372,7 @@ function wordRange(lineText, line, word, from = 0) {
 }
 
 function parseNamedFunctionHeader(cleaned) {
-  const start = cleaned.match(/^\s*(pub\s+)?(unsafe\s+)?fn\s+(?:([A-Za-z_]\w*)\.)?([A-Za-z_]\w*)\s*(\[[^\]]*\])?\s*\(/);
+  const start = cleaned.match(/^\s*(pub\s+|export\s+)?(unsafe\s+)?fn\s+(?:([A-Za-z_]\w*)\.)?([A-Za-z_]\w*)\s*(\[[^\]]*\])?\s*\(/);
   if (!start) return undefined;
   const open = cleaned.indexOf('(', start[0].lastIndexOf('('));
   let depth = 0;
@@ -521,7 +521,7 @@ function parseDocument(uri, text) {
       continue;
     }
 
-    match = cleaned.match(/^\s*struct\s+([A-Za-z_]\w*)\s*:\s*$/);
+    match = cleaned.match(/^\s*(?:pub\s+|export\s+)?struct\s+([A-Za-z_]\w*)\s*:\s*$/);
     if (match) {
       const name = match[1];
       const endLine = blocks.ends.get(line) ?? line;
@@ -544,7 +544,7 @@ function parseDocument(uri, text) {
       continue;
     }
 
-    match = cleaned.match(/^\s*enum\s+([A-Za-z_]\w*)\s*:\s*$/);
+    match = cleaned.match(/^\s*(?:pub\s+|export\s+)?enum\s+([A-Za-z_]\w*)\s*:\s*$/);
     if (match) {
       const name = match[1];
       const endLine = blocks.ends.get(line) ?? line;
@@ -579,7 +579,7 @@ function parseDocument(uri, text) {
       continue;
     }
 
-    match = cleaned.match(/^\s*const\s+([A-Za-z_]\w*)\s*:\s*([^=]+?)\s*=\s*/);
+    match = cleaned.match(/^\s*const\s+([A-Za-z_]\w*)\s*:\s*(.+?)\s*->\s*/);
     if (match) {
       add(makeSymbol(uri, lines, match[1], SymbolKind.Constant, line, original.indexOf(match[1]), line, {
         signature: `const ${match[1]}: ${match[2].trim()}`,

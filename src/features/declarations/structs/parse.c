@@ -108,8 +108,12 @@ PieParseResult pie_feature_structs_parse_top_level(PieParseContext *ctx,
 
   size_t start = api->pos(parser);
   int is_pub = 0;
+  int is_export = 0;
   if (api->match(parser, PIE_TOK_PUB)) {
     is_pub = 1;
+  }
+  if (api->match(parser, PIE_TOK_EXPORT)) {
+    is_export = 1;
   }
 
   if (!api->match(parser, PIE_TOK_STRUCT)) {
@@ -140,6 +144,7 @@ PieParseResult pie_feature_structs_parse_top_level(PieParseContext *ctx,
   memset(&def, 0, sizeof(def));
   def.name = struct_name;
   def.is_pub = is_pub;
+  def.is_export = is_export;
 
   if (!parse_struct_fields(ctx, &def)) {
     free(struct_name);

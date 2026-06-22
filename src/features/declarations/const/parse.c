@@ -73,8 +73,8 @@ PieParseResult pie_feature_const_parse_top_level(PieParseContext *ctx,
   }
 
   api->skip_separators(parser);
-  if (!api->expect(parser, PIE_TOK_EQ,
-                   "expected '=' after type in const declaration")) {
+  if (!api->expect(parser, PIE_TOK_ARROW,
+                   "expected '->' after type in const declaration")) {
     free(const_name);
     return PIE_PARSE_ERROR;
   }

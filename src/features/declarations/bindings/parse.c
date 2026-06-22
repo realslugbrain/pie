@@ -136,7 +136,7 @@ static PieAstType parse_type_annotation(PieParseContext *ctx) {
 
   if (api->match(parser, PIE_TOK_LPAREN)) {
     if (api->match(parser, PIE_TOK_RPAREN)) {
-      if (api->check(parser, PIE_TOK_ARROW)) {
+      if (api->check(parser, PIE_TOK_FAT_ARROW)) {
         api->advance(parser);
         PieAstType ret = parse_type_annotation(ctx);
         PieAstType func_type = pie_ast_type_simple(PIE_AST_TYPE_CLOSURE);
@@ -157,7 +157,7 @@ static PieAstType parse_type_annotation(PieParseContext *ctx) {
       if (!api->expect(parser, PIE_TOK_RPAREN, "expected ')' or ',' in type")) {
         return pie_ast_type_simple(PIE_AST_TYPE_INFER);
       }
-      if (api->check(parser, PIE_TOK_ARROW)) {
+      if (api->check(parser, PIE_TOK_FAT_ARROW)) {
         api->advance(parser);
         PieAstType ret = parse_type_annotation(ctx);
         PieAstType func_type = pie_ast_type_simple(PIE_AST_TYPE_CLOSURE);
@@ -203,7 +203,7 @@ static PieAstType parse_type_annotation(PieParseContext *ctx) {
       return pie_ast_type_simple(PIE_AST_TYPE_INFER);
     }
 
-    if (api->check(parser, PIE_TOK_ARROW)) {
+    if (api->check(parser, PIE_TOK_FAT_ARROW)) {
       PieAstType func_type = pie_ast_type_simple(PIE_AST_TYPE_CLOSURE);
       func_type.func_param_kinds = (PieAstTypeKind *)malloc(
           tuple_type.tuple_element_count * sizeof(PieAstTypeKind));

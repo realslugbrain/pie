@@ -1,4 +1,4 @@
-const X: int = "hello"
+const X: int -> "hello"
 
 fn main() -> int:
     return 0

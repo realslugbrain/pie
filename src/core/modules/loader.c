@@ -77,6 +77,7 @@ static PieStructDef deep_copy_struct_def(const PieStructDef *src) {
   PieStructDef d;
   d.name = ldup(src->name);
   d.is_pub = src->is_pub;
+  d.is_export = src->is_export;
   d.field_count = src->field_count;
   d.field_capacity = src->field_count;
   if (src->field_count > 0) {
@@ -96,6 +97,7 @@ static PieEnumDef deep_copy_enum_def(const PieEnumDef *src) {
   PieEnumDef d;
   d.name = ldup(src->name);
   d.is_pub = src->is_pub;
+  d.is_export = src->is_export;
   d.variant_count = src->variant_count;
   for (size_t i = 0; i < src->variant_count; i++) {
     d.variants[i].name = ldup(src->variants[i].name);
@@ -333,7 +335,7 @@ static int merge_module(PieProgram *dest, const PieProgram *src,
                         const char *module_path, PieDiagnosticBag *diag) {
   for (size_t i = 0; i < src->function_count; i++) {
     const PieFunction *func = &src->functions[i];
-    if (!func->is_pub)
+    if (!func->is_pub && !func->is_export)
       continue;
     if (function_exists(dest, func->name)) {
       pie_diag_errorf(diag, "duplicate function '%s' from module '%s'",
@@ -348,7 +350,7 @@ static int merge_module(PieProgram *dest, const PieProgram *src,
   }
   for (size_t i = 0; i < src->struct_count; i++) {
     const PieStructDef *def = &src->structs[i];
-    if (!def->is_pub)
+    if (!def->is_pub && !def->is_export)
       continue;
     if (struct_exists(dest, def->name)) {
       pie_diag_errorf(diag, "duplicate struct '%s' from module '%s'", def->name,
@@ -363,7 +365,7 @@ static int merge_module(PieProgram *dest, const PieProgram *src,
   }
   for (size_t i = 0; i < src->enum_count; i++) {
     const PieEnumDef *def = &src->enums[i];
-    if (!def->is_pub)
+    if (!def->is_pub && !def->is_export)
       continue;
     if (enum_exists(dest, def->name)) {
 

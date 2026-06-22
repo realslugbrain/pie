@@ -73,6 +73,7 @@ static PieTokenKind keyword_kind(const char *start, size_t len) {
       {"elif", PIE_TOK_ELIF},
       {"else", PIE_TOK_ELSE},
       {"enum", PIE_TOK_ENUM},
+      {"export", PIE_TOK_EXPORT},
       {"float", PIE_TOK_FLOAT_TYPE},
       {"fn", PIE_TOK_FN},
       {"for", PIE_TOK_FOR},
@@ -594,6 +595,11 @@ static int lex_one(Lexer *lexer) {
       advance(lexer);
       return push_token(lexer,
                         make_token(lexer, PIE_TOK_EQ_EQ, start, line, column));
+    }
+    if (peek(lexer) == '>') {
+      advance(lexer);
+      return push_token(lexer,
+                        make_token(lexer, PIE_TOK_FAT_ARROW, start, line, column));
     }
     return push_token(lexer,
                       make_token(lexer, PIE_TOK_EQ, start, line, column));

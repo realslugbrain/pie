@@ -134,7 +134,7 @@ static PieAstType parse_type(PieParseContext *ctx, int allow_void) {
 
   if (api->match(parser, PIE_TOK_LPAREN)) {
     if (api->match(parser, PIE_TOK_RPAREN)) {
-      if (api->check(parser, PIE_TOK_ARROW)) {
+      if (api->check(parser, PIE_TOK_FAT_ARROW)) {
         api->advance(parser);
         PieAstType ret = parse_type(ctx, 0);
         PieAstType func_type = pie_ast_type_simple(PIE_AST_TYPE_CLOSURE);
@@ -156,7 +156,7 @@ static PieAstType parse_type(PieParseContext *ctx, int allow_void) {
         return pie_ast_type_simple(PIE_AST_TYPE_INFER);
       }
 
-      if (api->check(parser, PIE_TOK_ARROW)) {
+      if (api->check(parser, PIE_TOK_FAT_ARROW)) {
         PieAstType func_type = pie_ast_type_simple(PIE_AST_TYPE_CLOSURE);
         func_type.func_param_kinds =
             (PieAstTypeKind *)malloc(1 * sizeof(PieAstTypeKind));
@@ -208,7 +208,7 @@ static PieAstType parse_type(PieParseContext *ctx, int allow_void) {
       return pie_ast_type_simple(PIE_AST_TYPE_INFER);
     }
 
-    if (api->check(parser, PIE_TOK_ARROW)) {
+    if (api->check(parser, PIE_TOK_FAT_ARROW)) {
       PieAstType func_type = pie_ast_type_simple(PIE_AST_TYPE_CLOSURE);
       func_type.func_param_kinds = (PieAstTypeKind *)malloc(
           tuple_type.tuple_element_count * sizeof(PieAstTypeKind));
@@ -472,10 +472,15 @@ PieParseResult pie_feature_functions_parse_top_level(PieParseContext *ctx,
 
   size_t start = api->pos(parser);
   int is_pub = 0;
+  int is_export = 0;
   int is_unsafe = 0;
   for (;;) {
-    if (!is_pub && api->match(parser, PIE_TOK_PUB)) {
+    if (!is_pub && !is_export && api->match(parser, PIE_TOK_PUB)) {
       is_pub = 1;
+      continue;
+    }
+    if (!is_pub && !is_export && api->match(parser, PIE_TOK_EXPORT)) {
+      is_export = 1;
       continue;
     }
     if (!is_unsafe && api->match(parser, PIE_TOK_UNSAFE)) {
@@ -810,6 +815,7 @@ PieParseResult pie_feature_functions_parse_top_level(PieParseContext *ctx,
   function.return_type = return_type;
   function.is_unsafe = is_unsafe;
   function.is_pub = is_pub;
+  function.is_export = is_export;
   function.body = body;
   if (!function.name) {
     free_function_params(&function);

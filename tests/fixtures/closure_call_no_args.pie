@@ -1,5 +1,5 @@
 fn main() -> int:
-    let f: () -> int -> fn() -> int:
+    let f: () => int -> fn() -> int:
         return 42
     end
     let result: int -> f()

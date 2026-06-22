@@ -166,6 +166,7 @@ static PieFunction *create_specialized_function(const PieFunction *original,
   spec->name = strdup(mangled_name);
   spec->is_unsafe = original->is_unsafe;
   spec->is_pub = original->is_pub;
+  spec->is_export = original->is_export;
   spec->type_param_count = 0;
   spec->type_params = NULL;
 

@@ -46,6 +46,8 @@ const char *pie_token_kind_name(PieTokenKind kind) {
     return "::";
   case PIE_TOK_ARROW:
     return "->";
+  case PIE_TOK_FAT_ARROW:
+    return "=>";
   case PIE_TOK_PLUS:
     return "+";
   case PIE_TOK_MINUS:
@@ -120,6 +122,8 @@ const char *pie_token_kind_name(PieTokenKind kind) {
     return "fn";
   case PIE_TOK_PUB:
     return "pub";
+  case PIE_TOK_EXPORT:
+    return "export";
   case PIE_TOK_RETURN:
     return "return";
   case PIE_TOK_BREAK:

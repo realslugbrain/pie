@@ -1,5 +1,5 @@
 fn main() -> int:
-    let worker: () -> int -> fn() -> int:
+    let worker: () => int -> fn() -> int:
         println("child")
         return 0
     end

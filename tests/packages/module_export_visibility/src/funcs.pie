@@ -1,0 +1,11 @@
+export fn exported_helper(x: int) -> int:
+    return x * 3
+end
+
+pub fn pub_only(x: int) -> int:
+    return x + 1
+end
+
+fn private_fn(x: int) -> int:
+    return x
+end
